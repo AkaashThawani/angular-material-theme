@@ -1,0 +1,265 @@
+<mat-sidenav-container class="app-container">
+    <mat-sidenav #sidenav mode="side" [opened]="true" position="start" class="theme-sidenav">
+        <app-theme-editor [activeSection]="currentSection"></app-theme-editor>
+    </mat-sidenav>
+
+    <mat-sidenav-content (scroll)="onScroll($event)" #scrollContainer>
+        <div class="sections-container">
+            <!-- Section 1: Colors -->
+            <section id="colors-section" class="full-section">
+                <div class="section-content">
+                    <h1 class="section-title">Colors</h1>
+                    <p class="section-subtitle">Layer 1: Color System Variables</p>
+
+                    <div class="colors-layout">
+                        <!-- Color Palette Grid -->
+                        <div class="color-palette">
+                            <h2>Color Palette</h2>
+                            <div class="color-grid">
+                                <!-- Primary Row -->
+                                <div class="color-swatch" [style.background-color]="'var(--mat-sys-primary)'">
+                                    <span class="swatch-label mat-text-on-primary">Primary</span>
+                                </div>
+                                <div class="color-swatch" [style.background-color]="'var(--mat-sys-on-primary)'"
+                                    [style.color]="'var(--mat-sys-primary)'">
+                                    <span class="swatch-label">On Primary</span>
+                                </div>
+                                <div class="color-swatch" [style.background-color]="'var(--mat-sys-primary-container)'">
+                                    <span class="swatch-label mat-text-on-primary-container">Primary Container</span>
+                                </div>
+                                <div class="color-swatch"
+                                    [style.background-color]="'var(--mat-sys-on-primary-container)'"
+                                    [style.color]="'var(--mat-sys-primary-container)'">
+                                    <span class="swatch-label">On Primary Container</span>
+                                </div>
+
+                                <!-- Secondary Row -->
+                                <div class="color-swatch" [style.background-color]="'var(--mat-sys-secondary)'">
+                                    <span class="swatch-label mat-text-on-secondary">Secondary</span>
+                                </div>
+                                <div class="color-swatch" [style.background-color]="'var(--mat-sys-on-secondary)'"
+                                    [style.color]="'var(--mat-sys-secondary)'">
+                                    <span class="swatch-label">On Secondary</span>
+                                </div>
+                                <div class="color-swatch"
+                                    [style.background-color]="'var(--mat-sys-secondary-container)'">
+                                    <span class="swatch-label mat-text-on-secondary-container">Secondary
+                                        Container</span>
+                                </div>
+                                <div class="color-swatch"
+                                    [style.background-color]="'var(--mat-sys-on-secondary-container)'"
+                                    [style.color]="'var(--mat-sys-secondary-container)'">
+                                    <span class="swatch-label">On Secondary Container</span>
+                                </div>
+
+                                <!-- Tertiary Row -->
+                                <div class="color-swatch" [style.background-color]="'var(--mat-sys-tertiary)'">
+                                    <span class="swatch-label mat-text-on-tertiary">Tertiary</span>
+                                </div>
+                                <div class="color-swatch" [style.background-color]="'var(--mat-sys-on-tertiary)'"
+                                    [style.color]="'var(--mat-sys-tertiary)'">
+                                    <span class="swatch-label">On Tertiary</span>
+                                </div>
+                                <div class="color-swatch"
+                                    [style.background-color]="'var(--mat-sys-tertiary-container)'">
+                                    <span class="swatch-label mat-text-on-tertiary-container">Tertiary Container</span>
+                                </div>
+                                <div class="color-swatch"
+                                    [style.background-color]="'var(--mat-sys-on-tertiary-container)'"
+                                    [style.color]="'var(--mat-sys-tertiary-container)'">
+                                    <span class="swatch-label">On Tertiary Container</span>
+                                </div>
+
+                                <!-- Error Row -->
+                                <div class="color-swatch" [style.background-color]="'var(--mat-sys-error)'">
+                                    <span class="swatch-label mat-text-on-error">Error</span>
+                                </div>
+                                <div class="color-swatch" [style.background-color]="'var(--mat-sys-on-error)'"
+                                    [style.color]="'var(--mat-sys-error)'">
+                                    <span class="swatch-label">On Error</span>
+                                </div>
+                                <div class="color-swatch" [style.background-color]="'var(--mat-sys-error-container)'">
+                                    <span class="swatch-label mat-text-on-error-container">Error Container</span>
+                                </div>
+                                <div class="color-swatch" [style.background-color]="'var(--mat-sys-on-error-container)'"
+                                    [style.color]="'var(--mat-sys-error-container)'">
+                                    <span class="swatch-label">On Error Container</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Surface Hierarchy -->
+                        <div class="surface-hierarchy">
+                            <h2>Surface Hierarchy</h2>
+                            <div class="hierarchy-container" [style.background-color]="'var(--mat-sys-background)'">
+                                <div class="hierarchy-label">Background</div>
+                                <div class="surface-layer"
+                                    [style.background-color]="'var(--mat-sys-surface-container-lowest)'">
+                                    <div class="hierarchy-label">Surface Container Lowest</div>
+                                    <div class="surface-layer"
+                                        [style.background-color]="'var(--mat-sys-surface-container-low)'">
+                                        <div class="hierarchy-label">Surface Container Low</div>
+                                        <div class="surface-layer"
+                                            [style.background-color]="'var(--mat-sys-surface-container)'">
+                                            <div class="hierarchy-label">Surface Container</div>
+                                            <div class="surface-layer"
+                                                [style.background-color]="'var(--mat-sys-surface-container-high)'">
+                                                <div class="hierarchy-label">Surface Container High</div>
+                                                <div class="surface-layer"
+                                                    [style.background-color]="'var(--mat-sys-surface-container-highest)'">
+                                                    <div class="hierarchy-label">Surface Container Highest</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Typography -->
+            <section id="typography-section" class="full-section">
+                <div class="section-content">
+                    <h1 class="section-title">Typography</h1>
+                    <p class="section-subtitle">Layer 1: Typography System Variables</p>
+
+                    <div class="type-scale">
+                        <!-- Display -->
+                        <div class="type-category">
+                            <h2>Display</h2>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-display-large)'">
+                                Display Large - The quick brown fox jumps over the lazy dog
+                            </div>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-display-medium)'">
+                                Display Medium - The quick brown fox jumps over the lazy dog
+                            </div>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-display-small)'">
+                                Display Small - The quick brown fox jumps over the lazy dog
+                            </div>
+                        </div>
+
+                        <!-- Headline -->
+                        <div class="type-category">
+                            <h2>Headline</h2>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-headline-large)'">
+                                Headline Large - The quick brown fox jumps over the lazy dog
+                            </div>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-headline-medium)'">
+                                Headline Medium - The quick brown fox jumps over the lazy dog
+                            </div>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-headline-small)'">
+                                Headline Small - The quick brown fox jumps over the lazy dog
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <div class="type-category">
+                            <h2>Title</h2>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-title-large)'">
+                                Title Large - The quick brown fox jumps over the lazy dog
+                            </div>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-title-medium)'">
+                                Title Medium - The quick brown fox jumps over the lazy dog
+                            </div>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-title-small)'">
+                                Title Small - The quick brown fox jumps over the lazy dog
+                            </div>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="type-category">
+                            <h2>Body</h2>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-body-large)'">
+                                Body Large - The quick brown fox jumps over the lazy dog. Lorem ipsum dolor sit amet,
+                                consectetur adipiscing elit.
+                            </div>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-body-medium)'">
+                                Body Medium - The quick brown fox jumps over the lazy dog. Lorem ipsum dolor sit amet,
+                                consectetur adipiscing elit.
+                            </div>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-body-small)'">
+                                Body Small - The quick brown fox jumps over the lazy dog. Lorem ipsum dolor sit amet,
+                                consectetur adipiscing elit.
+                            </div>
+                        </div>
+
+                        <!-- Label -->
+                        <div class="type-category">
+                            <h2>Label</h2>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-label-large)'">
+                                Label Large - BUTTON TEXT
+                            </div>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-label-medium)'">
+                                Label Medium - BUTTON TEXT
+                            </div>
+                            <div class="type-sample" [style.font]="'var(--mat-sys-label-small)'">
+                                Label Small - BUTTON TEXT
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Shape -->
+            <section id="shape-section" class="full-section">
+                <div class="section-content">
+                    <h1 class="section-title">Shape</h1>
+                    <p class="section-subtitle">Layer 1: Corner Radius System Variables</p>
+
+                    <div class="shape-showcase">
+                        <div class="shape-row">
+                            <div class="shape-box mat-bg-primary">
+                                <span class="mat-text-on-primary">Extra Small</span>
+                            </div>
+                            <div class="shape-box mat-bg-primary">
+                                <span class="mat-text-on-primary">Small</span>
+                            </div>
+                            <div class="shape-box mat-bg-primary">
+                                <span class="mat-text-on-primary">Medium</span>
+                            </div>
+                            <div class="shape-box mat-bg-primary">
+                                <span class="mat-text-on-primary">Large</span>
+                            </div>
+                            <div class="shape-box mat-bg-primary">
+                                <span class="mat-text-on-primary">Extra Large</span>
+                            </div>
+                            <div class="shape-box mat-bg-primary">
+                                <span class="mat-text-on-primary">Full</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Effects -->
+            <section id="effects-section" class="full-section">
+                <div class="section-content">
+                    <h1 class="section-title">Effects</h1>
+                    <p class="section-subtitle">Layer 1: Elevation System Variables</p>
+
+                    <div class="effects-showcase">
+                        <div class="effects-row">
+                            <div class="effect-card mat-bg-surface">
+                                <span class="mat-text-on-surface">Level 1</span>
+                            </div>
+                            <div class="effect-card mat-bg-surface">
+                                <span class="mat-text-on-surface">Level 2</span>
+                            </div>
+                            <div class="effect-card mat-bg-surface">
+                                <span class="mat-text-on-surface">Level 3</span>
+                            </div>
+                            <div class="effect-card mat-bg-surface">
+                                <span class="mat-text-on-surface">Level 4</span>
+                            </div>
+                            <div class="effect-card mat-bg-surface">
+                                <span class="mat-text-on-surface">Level 5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,135 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+:root {
+  /* Primary */
+  --mat-sys-primary: #6750A4;
+  --mat-sys-on-primary: #FFFFFF;
+  --mat-sys-primary-container: #EADDFF;
+  --mat-sys-on-primary-container: #21005D;
+  --mat-sys-primary-fixed: #EADDFF;
+  --mat-sys-on-primary-fixed: #21005D;
+  --mat-sys-on-primary-fixed-variant: #4F378B;
+  --mat-sys-primary-fixed-dim: #D0BCFF;
+  --mat-sys-inverse-primary: #D0BCFF;
+
+  /* Secondary */
+  --mat-sys-secondary: #625B71;
+  --mat-sys-on-secondary: #FFFFFF;
+  --mat-sys-secondary-container: #E8DEF8;
+  --mat-sys-on-secondary-container: #1D192B;
+  --mat-sys-secondary-fixed: #E8DEF8;
+  --mat-sys-on-secondary-fixed: #1D192B;
+  --mat-sys-on-secondary-fixed-variant: #4A4458;
+  --mat-sys-secondary-fixed-dim: #CCC2DC;
+
+  /* Tertiary */
+  --mat-sys-tertiary: #7D5260;
+  --mat-sys-on-tertiary: #FFFFFF;
+  --mat-sys-tertiary-container: #FFD8E4;
+  --mat-sys-on-tertiary-container: #31111D;
+  --mat-sys-tertiary-fixed: #FFD8E4;
+  --mat-sys-on-tertiary-fixed: #31111D;
+  --mat-sys-on-tertiary-fixed-variant: #633B48;
+  --mat-sys-tertiary-fixed-dim: #EFB8C8;
+
+  /* Error */
+  --mat-sys-error: #B3261E;
+  --mat-sys-on-error: #FFFFFF;
+  --mat-sys-error-container: #F9DEDC;
+  --mat-sys-on-error-container: #410E0B;
+
+  /* Surface */
+  --mat-sys-surface: #FEF7FF;
+  --mat-sys-on-surface: #1D1B20;
+  --mat-sys-on-surface-variant: #49454F;
+  --mat-sys-surface-bright: #FEF7FF;
+  --mat-sys-surface-container: #F3EDF7;
+  --mat-sys-surface-container-high: #ECE6F0;
+  --mat-sys-surface-container-highest: #E6E0E9;
+  --mat-sys-surface-container-low: #F7F2FA;
+  --mat-sys-surface-container-lowest: #FFFFFF;
+  --mat-sys-surface-dim: #DED8E1;
+  --mat-sys-surface-tint: #6750A4;
+  --mat-sys-surface-variant: #E7E0EC;
+  --mat-sys-inverse-surface: #313033;
+  --mat-sys-inverse-on-surface: #F4EFF4;
+
+  /* Miscellaneous */
+  --mat-sys-background: #FEF7FF;
+  --mat-sys-on-background: #1D1B20;
+  --mat-sys-neutral-variant20: #322F37;
+  --mat-sys-neutral10: #1D1B20;
+  --mat-sys-outline: #79747E;
+  --mat-sys-outline-variant: #CAC4D0;
+  --mat-sys-scrim: #000000;
+  --mat-sys-shadow: #000000;
+
+  /* Typography */
+  --mat-sys-body-small: 400 12px/16px Roboto, sans-serif;
+  --mat-sys-body-small-tracking: 0.4px;
+  --mat-sys-body-medium: 400 14px/20px Roboto, sans-serif;
+  --mat-sys-body-medium-tracking: 0.25px;
+  --mat-sys-body-large: 400 16px/24px Roboto, sans-serif;
+  --mat-sys-body-large-tracking: 0.5px;
+  --mat-sys-label-small: 500 11px/16px Roboto, sans-serif;
+  --mat-sys-label-small-tracking: 0.5px;
+  --mat-sys-label-medium: 500 12px/16px Roboto, sans-serif;
+  --mat-sys-label-medium-tracking: 0.5px;
+  --mat-sys-label-large: 500 14px/20px Roboto, sans-serif;
+  --mat-sys-label-large-tracking: 0.1px;
+  --mat-sys-title-small: 500 14px/20px Roboto, sans-serif;
+  --mat-sys-title-small-tracking: 0.1px;
+  --mat-sys-title-medium: 500 16px/24px Roboto, sans-serif;
+  --mat-sys-title-medium-tracking: 0.15px;
+  --mat-sys-title-large: 400 22px/28px Roboto, sans-serif;
+  --mat-sys-title-large-tracking: 0px;
+  --mat-sys-headline-small: 400 24px/32px Roboto, sans-serif;
+  --mat-sys-headline-small-tracking: 0px;
+  --mat-sys-headline-medium: 400 28px/36px Roboto, sans-serif;
+  --mat-sys-headline-medium-tracking: 0px;
+  --mat-sys-headline-large: 400 32px/40px Roboto, sans-serif;
+  --mat-sys-headline-large-tracking: 0px;
+  --mat-sys-display-small: 400 36px/44px Roboto, sans-serif;
+  --mat-sys-display-small-tracking: 0px;
+  --mat-sys-display-medium: 400 45px/52px Roboto, sans-serif;
+  --mat-sys-display-medium-tracking: 0px;
+  --mat-sys-display-large: 400 57px/64px Roboto, sans-serif;
+  --mat-sys-display-large-tracking: -0.25px;
+
+  /* Shape */
+  --mat-sys-corner-extra-small: 4px;
+  --mat-sys-corner-small: 8px;
+  --mat-sys-corner-medium: 12px;
+  --mat-sys-corner-large: 16px;
+  --mat-sys-corner-extra-large: 28px;
+  --mat-sys-corner-full: 9999px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+$theme: mat.define-theme((color: (theme-type: light,
+        primary: mat.$violet-palette,
+        tertiary: mat.$magenta-palette,
+      ),
+      typography: (plain-family: Roboto,
+        brand-family: Roboto,
+      ),
+    ));
+
+html {
+  @include mat.all-component-themes($theme);
+  @include mat.system-level-colors($theme);
+  @include mat.system-level-typography($theme);
+  @include mat.system-classes();
+}

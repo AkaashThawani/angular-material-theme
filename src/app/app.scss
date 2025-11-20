@@ -1,0 +1,253 @@
+.app-container {
+    height: 100vh;
+}
+
+.theme-sidenav {
+    width: 400px;
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+// Sections Container
+.sections-container {
+    scroll-snap-type: y mandatory;
+    height: 100%;
+}
+
+.full-section {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.section-content {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.section-title {
+    font: var(--mat-sys-display-large);
+    color: var(--mat-sys-on-background);
+    margin: 0 0 8px 0;
+}
+
+// Colors Section
+#colors-section {
+    background-color: var(--mat-sys-background);
+}
+
+.colors-layout {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+
+    // Make children take equal width
+    >* {
+        flex: 1;
+    }
+}
+
+.color-palette {
+    margin-bottom: 0;
+
+    h2 {
+        font: var(--mat-sys-headline-medium);
+        color: var(--mat-sys-on-background);
+        margin: 0 0 24px 0;
+    }
+}
+
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.color-swatch {
+    aspect-ratio: 1;
+    border-radius: var(--mat-sys-corner-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-shadow: var(--mat-sys-level1);
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--mat-sys-level3);
+    }
+}
+
+.swatch-label {
+    font: var(--mat-sys-label-medium);
+    font-weight: 500;
+    text-align: center;
+}
+
+.surface-hierarchy {
+    h2 {
+        font: var(--mat-sys-headline-medium);
+        color: var(--mat-sys-on-background);
+        margin: 0 0 24px 0;
+    }
+}
+
+.hierarchy-container {
+    padding: 32px;
+    border-radius: var(--mat-sys-corner-large);
+}
+
+.surface-layer {
+    padding: 24px;
+    margin: 16px 0;
+    border-radius: var(--mat-sys-corner-medium);
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+}
+
+.hierarchy-label {
+    font: var(--mat-sys-label-large);
+    color: var(--mat-sys-on-surface);
+    margin-bottom: 8px;
+}
+
+// Typography Section
+#typography-section {
+    background-color: var(--mat-sys-surface);
+}
+
+.type-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.type-category {
+    h2 {
+        font: var(--mat-sys-headline-small);
+        color: var(--mat-sys-on-surface);
+        margin: 0 0 16px 0;
+    }
+}
+
+.type-sample {
+    padding: 16px;
+    margin: 8px 0;
+    background-color: var(--mat-sys-surface-container);
+    border-radius: var(--mat-sys-corner-small);
+    color: var(--mat-sys-on-surface);
+}
+
+// Shape Section
+#shape-section {
+    background-color: var(--mat-sys-background);
+}
+
+.shape-showcase {
+    width: 100%;
+}
+
+.shape-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 24px;
+}
+
+.shape-box {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: var(--mat-sys-label-large);
+    font-weight: 500;
+    box-shadow: var(--mat-sys-level2);
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--mat-sys-level4);
+    }
+
+    // Apply corner radius directly using CSS variables
+    &:nth-child(1) {
+        border-radius: var(--mat-sys-corner-extra-small);
+    }
+
+    &:nth-child(2) {
+        border-radius: var(--mat-sys-corner-small);
+    }
+
+    &:nth-child(3) {
+        border-radius: var(--mat-sys-corner-medium);
+    }
+
+    &:nth-child(4) {
+        border-radius: var(--mat-sys-corner-large);
+    }
+
+    &:nth-child(5) {
+        border-radius: var(--mat-sys-corner-extra-large);
+    }
+
+    &:nth-child(6) {
+        border-radius: var(--mat-sys-corner-full);
+    }
+}
+
+// Effects Section
+#effects-section {
+    background-color: var(--mat-sys-surface);
+}
+
+.effects-showcase {
+    width: 100%;
+}
+
+.effects-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 32px;
+}
+
+.effect-card {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: var(--mat-sys-label-large);
+    font-weight: 500;
+    border-radius: var(--mat-sys-corner-medium);
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: translateY(-8px);
+    }
+
+    // Apply elevation directly using CSS variables
+    &:nth-child(1) {
+        box-shadow: var(--mat-sys-level1);
+    }
+
+    &:nth-child(2) {
+        box-shadow: var(--mat-sys-level2);
+    }
+
+    &:nth-child(3) {
+        box-shadow: var(--mat-sys-level3);
+    }
+
+    &:nth-child(4) {
+        box-shadow: var(--mat-sys-level4);
+    }
+
+    &:nth-child(5) {
+        box-shadow: var(--mat-sys-level5);
+    }
+}
