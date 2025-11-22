@@ -1,228 +1,86 @@
-/* You can add global styles to this file, and also import other style files */
-@use '@angular/material' as mat;
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css';
 
-@include mat.core();
+@import "@angular/cdk/overlay-prebuilt.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "@spartan-ng/brain/hlm-tailwind-preset.css";
 
 :root {
-  /* Primary */
-  --mat-sys-primary: #6750A4;
-  --mat-sys-on-primary: #FFFFFF;
-  --mat-sys-primary-container: #EADDFF;
-  --mat-sys-on-primary-container: #21005D;
-  --mat-sys-primary-fixed: #EADDFF;
-  --mat-sys-on-primary-fixed: #21005D;
-  --mat-sys-on-primary-fixed-variant: #4F378B;
-  --mat-sys-primary-fixed-dim: #D0BCFF;
-  --mat-sys-inverse-primary: #D0BCFF;
+color-scheme: light;
 
-  /* Secondary */
-  --mat-sys-secondary: #625B71;
-  --mat-sys-on-secondary: #FFFFFF;
-  --mat-sys-secondary-container: #E8DEF8;
-  --mat-sys-on-secondary-container: #1D192B;
-  --mat-sys-secondary-fixed: #E8DEF8;
-  --mat-sys-on-secondary-fixed: #1D192B;
-  --mat-sys-on-secondary-fixed-variant: #4A4458;
-  --mat-sys-secondary-fixed-dim: #CCC2DC;
+--font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-  /* Tertiary */
-  --mat-sys-tertiary: #7D5260;
-  --mat-sys-on-tertiary: #FFFFFF;
-  --mat-sys-tertiary-container: #FFD8E4;
-  --mat-sys-on-tertiary-container: #31111D;
-  --mat-sys-tertiary-fixed: #FFD8E4;
-  --mat-sys-on-tertiary-fixed: #31111D;
-  --mat-sys-on-tertiary-fixed-variant: #633B48;
-  --mat-sys-tertiary-fixed-dim: #EFB8C8;
-
-  /* Error */
-  --mat-sys-error: #B3261E;
-  --mat-sys-on-error: #FFFFFF;
-  --mat-sys-error-container: #F9DEDC;
-  --mat-sys-on-error-container: #410E0B;
-
-  /* Surface */
-  --mat-sys-surface: #FEF7FF;
-  --mat-sys-on-surface: #1D1B20;
-  --mat-sys-on-surface-variant: #49454F;
-  --mat-sys-surface-bright: #FEF7FF;
-  --mat-sys-surface-container: #F3EDF7;
-  --mat-sys-surface-container-high: #ECE6F0;
-  --mat-sys-surface-container-highest: #E6E0E9;
-  --mat-sys-surface-container-low: #F7F2FA;
-  --mat-sys-surface-container-lowest: #FFFFFF;
-  --mat-sys-surface-dim: #DED8E1;
-  --mat-sys-surface-tint: #6750A4;
-  --mat-sys-surface-variant: #E7E0EC;
-  --mat-sys-inverse-surface: #313033;
-  --mat-sys-inverse-on-surface: #F4EFF4;
-
-  /* Miscellaneous */
-  --mat-sys-background: #FEF7FF;
-  --mat-sys-on-background: #1D1B20;
-  --mat-sys-neutral-variant20: #322F37;
-  --mat-sys-neutral10: #1D1B20;
-  --mat-sys-outline: #79747E;
-  --mat-sys-outline-variant: #CAC4D0;
-  --mat-sys-scrim: #000000;
-  --mat-sys-shadow: #000000;
-
-  /* Typography */
-  --mat-sys-body-small: 400 12px/16px Roboto, sans-serif;
-  --mat-sys-body-small-tracking: 0.4px;
-  --mat-sys-body-medium: 400 14px/20px Roboto, sans-serif;
-  --mat-sys-body-medium-tracking: 0.25px;
-  --mat-sys-body-large: 400 16px/24px Roboto, sans-serif;
-  --mat-sys-body-large-tracking: 0.5px;
-  --mat-sys-label-small: 500 11px/16px Roboto, sans-serif;
-  --mat-sys-label-small-tracking: 0.5px;
-  --mat-sys-label-medium: 500 12px/16px Roboto, sans-serif;
-  --mat-sys-label-medium-tracking: 0.5px;
-  --mat-sys-label-large: 500 14px/20px Roboto, sans-serif;
-  --mat-sys-label-large-tracking: 0.1px;
-  --mat-sys-title-small: 500 14px/20px Roboto, sans-serif;
-  --mat-sys-title-small-tracking: 0.1px;
-  --mat-sys-title-medium: 500 16px/24px Roboto, sans-serif;
-  --mat-sys-title-medium-tracking: 0.15px;
-  --mat-sys-title-large: 400 22px/28px Roboto, sans-serif;
-  --mat-sys-title-large-tracking: 0px;
-  --mat-sys-headline-small: 400 24px/32px Roboto, sans-serif;
-  --mat-sys-headline-small-tracking: 0px;
-  --mat-sys-headline-medium: 400 28px/36px Roboto, sans-serif;
-  --mat-sys-headline-medium-tracking: 0px;
-  --mat-sys-headline-large: 400 32px/40px Roboto, sans-serif;
-  --mat-sys-headline-large-tracking: 0px;
-  --mat-sys-display-small: 400 36px/44px Roboto, sans-serif;
-  --mat-sys-display-small-tracking: 0px;
-  --mat-sys-display-medium: 400 45px/52px Roboto, sans-serif;
-  --mat-sys-display-medium-tracking: 0px;
-  --mat-sys-display-large: 400 57px/64px Roboto, sans-serif;
-  --mat-sys-display-large-tracking: -0.25px;
-
-  /* Shape */
-  --mat-sys-corner-extra-small: 4px;
-  --mat-sys-corner-small: 8px;
-  --mat-sys-corner-medium: 12px;
-  --mat-sys-corner-large: 16px;
-  --mat-sys-corner-extra-large: 28px;
-  --mat-sys-corner-full: 9999px;
-
-  /* Elevation */
-  --mat-sys-shadow-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-  --mat-sys-shadow-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
-  --mat-sys-shadow-3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
-  --mat-sys-shadow-4: 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15);
-  --mat-sys-shadow-5: 0px 4px 4px 0px rgba(0, 0, 0, 0.3), 0px 8px 12px 6px rgba(0, 0, 0, 0.15);
+--radius: 0.625rem;
+--background: oklch(1 0 0);
+--foreground: oklch(0.145 0 0);
+--card: oklch(1 0 0);
+--card-foreground: oklch(0.145 0 0);
+--popover: oklch(1 0 0);
+--popover-foreground: oklch(0.145 0 0);
+--primary: oklch(0.205 0 0);
+--primary-foreground: oklch(0.985 0 0);
+--secondary: oklch(0.97 0 0);
+--secondary-foreground: oklch(0.205 0 0);
+--muted: oklch(0.97 0 0);
+--muted-foreground: oklch(0.556 0 0);
+--accent: oklch(0.97 0 0);
+--accent-foreground: oklch(0.205 0 0);
+--destructive: oklch(0.577 0.245 27.325);
+--border: oklch(0.922 0 0);
+--input: oklch(0.922 0 0);
+--ring: oklch(0.708 0 0);
+--sidebar: oklch(0.985 0 0);
+--sidebar-foreground: oklch(0.145 0 0);
+--sidebar-primary: oklch(0.205 0 0);
+--sidebar-primary-foreground: oklch(0.985 0 0);
+--sidebar-accent: oklch(0.97 0 0);
+--sidebar-accent-foreground: oklch(0.205 0 0);
+--sidebar-border: oklch(0.922 0 0);
+--sidebar-ring: oklch(0.708 0 0);
 }
 
-html,
+:root.dark {
+color-scheme: dark;
+
+--background: oklch(0.145 0 0);
+--foreground: oklch(0.985 0 0);
+--card: oklch(0.205 0 0);
+--card-foreground: oklch(0.985 0 0);
+--popover: oklch(0.205 0 0);
+--popover-foreground: oklch(0.985 0 0);
+--primary: oklch(0.922 0 0);
+--primary-foreground: oklch(0.205 0 0);
+--secondary: oklch(0.269 0 0);
+--secondary-foreground: oklch(0.985 0 0);
+--muted: oklch(0.269 0 0);
+--muted-foreground: oklch(0.708 0 0);
+--accent: oklch(0.269 0 0);
+--accent-foreground: oklch(0.985 0 0);
+--destructive: oklch(0.704 0.191 22.216);
+--border: oklch(1 0 0 / 10%);
+--input: oklch(1 0 0 / 15%);
+--ring: oklch(0.556 0 0);
+--sidebar: oklch(0.205 0 0);
+--sidebar-foreground: oklch(0.985 0 0);
+--sidebar-primary: oklch(0.985 0 0);
+--sidebar-primary-foreground: oklch(0.205 0 0);
+--sidebar-accent: oklch(0.269 0 0);
+--sidebar-accent-foreground: oklch(0.985 0 0);
+--sidebar-border: oklch(1 0 0 / 10%);
+--sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+* {
+@apply border-border outline-ring/50;
+}
 body {
-  height: 100%;
+@apply bg-background text-foreground;
 }
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-$theme: mat.define-theme((color: (theme-type: light,
-        primary: mat.$violet-palette,
-        tertiary: mat.$magenta-palette,
-      ),
-      typography: (plain-family: Roboto,
-        brand-family: Roboto,
-      ),
-    ));
-
-html {
-  @include mat.all-component-themes($theme);
-  @include mat.system-level-colors($theme);
-  @include mat.system-level-typography($theme);
-  @include mat.system-classes();
-}
-
-/* Layer 2: Manual Utility Class Generation */
-/* Backgrounds */
-$colors: (
-  "primary",
-  "on-primary",
-  "primary-container",
-  "on-primary-container",
-  "secondary",
-  "on-secondary",
-  "secondary-container",
-  "on-secondary-container",
-  "tertiary",
-  "on-tertiary",
-  "tertiary-container",
-  "on-tertiary-container",
-  "error",
-  "on-error",
-  "error-container",
-  "on-error-container",
-  "surface",
-  "on-surface",
-  "surface-variant",
-  "on-surface-variant",
-  "inverse-surface",
-  "inverse-on-surface",
-  "background",
-  "on-background",
-  "surface-container-lowest",
-  "surface-container-low",
-  "surface-container",
-  "surface-container-high",
-  "surface-container-highest"
-);
-
-@each $color in $colors {
-  .mat-bg-#{$color} {
-    background-color: var(--mat-sys-#{$color}) !important;
-  }
-
-  .mat-text-#{$color} {
-    color: var(--mat-sys-#{$color}) !important;
-  }
-}
-
-/* Shapes */
-$shapes: (
-  "extra-small",
-  "small",
-  "medium",
-  "large",
-  "extra-large",
-  "full"
-);
-
-@each $shape in $shapes {
-  .mat-corner-#{$shape} {
-    border-radius: var(--mat-sys-corner-#{$shape}) !important;
-  }
-}
-
-/* Shadows */
-$levels: 1, 2, 3, 4, 5;
-
-@each $level in $levels {
-  .mat-shadow-#{$level} {
-    box-shadow: var(--mat-sys-shadow-#{$level}) !important;
-  }
-}
-
-.mat-shadow-0 {
-  box-shadow: none !important;
-}
-
-/* Typography - Font utilities */
-$types: "display", "headline", "title", "body", "label";
-$sizes: "large", "medium", "small";
-
-@each $type in $types {
-  @each $size in $sizes {
-    .mat-font-#{$type}-#{$size} {
-      font: var(--mat-sys-#{$type}-#{$size}) !important;
-      letter-spacing: var(--mat-sys-#{$type}-#{$size}-tracking) !important;
-    }
-  }
 }

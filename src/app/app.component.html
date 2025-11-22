@@ -1,55 +1,18 @@
-<mat-sidenav-container class="app-container">
-    <mat-sidenav #sidenav mode="side" [opened]="true" position="start" class="theme-sidenav">
-        <app-theme-editor [activeSection]="currentSection" (tabChange)="scrollToSection($event)"></app-theme-editor>
-    </mat-sidenav>
+<div class="flex h-screen w-full bg-background text-foreground overflow-hidden">
+    <!-- Sidebar: Theme Editor -->
+    <aside class="w-80 border-r border-border bg-card overflow-y-auto">
+        <app-theme-editor [activeSection]="0"></app-theme-editor>
+    </aside>
 
-    <mat-sidenav-content (scroll)="onScroll($event)" #scrollContainer>
-        <div class="sections-container">
-            <!-- Section 0: Components Showcase -->
-            <section id="components-section" class="full-section">
-                <div class="section-content">
-                    <h1 class="section-title">Components Showcase</h1>
-                    <p class="section-subtitle">Real-time Preview of Material Components</p>
-                    <app-components-showcase></app-components-showcase>
-                </div>
-            </section>
+    <!-- Main Content: Components Showcase -->
+    <main class="flex-1 overflow-y-auto bg-background p-8">
+        <div class="max-w-5xl mx-auto space-y-8">
+            <div class="space-y-2">
+                <h1 class="text-3xl font-bold tracking-tight">Components Showcase</h1>
+                <p class="text-muted-foreground">Real-time Preview of Spartan UI Components</p>
+            </div>
 
-            <!-- HIDDEN: Layer 1 Visualization Sections -->
-            <!-- Uncomment these sections to see Layer 1 variable visualizations -->
-
-            <!-- Section 1: Colors (HIDDEN)
-            <section id="colors-section" class="full-section">
-                ... (color palette and surface hierarchy)
-            </section>
-            -->
-
-            <!-- Section 2: Typography (HIDDEN)
-            <section id="typography-section" class="full-section">
-                ... (typography scale samples)
-            </section>
-            -->
-
-            <!-- Section 3: Shape (HIDDEN)
-            <section id="shape-section" class="full-section">
-                ... (corner radius examples)
-            </section>
-            -->
-
-            <!-- Section 4: Effects (HIDDEN)
-            <section id="effects-section" class="full-section">
-                ... (elevation/shadow examples)
-            </section>
-            -->
-
-            <!-- Section 5: Utilities (HIDDEN - Layer 2)
-            <section id="utilities-section" class="full-section">
-                <div class="section-content">
-                    <h1 class="section-title">Utility Explorer</h1>
-                    <p class="section-subtitle">Layer 2: Utility Classes & Playground</p>
-                    <app-utility-explorer></app-utility-explorer>
-                </div>
-            </section>
-            -->
+            <app-components-showcase></app-components-showcase>
         </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+    </main>
+</div>

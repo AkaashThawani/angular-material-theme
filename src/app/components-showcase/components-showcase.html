@@ -1,225 +1,97 @@
-<div class="showcase-container">
+<div class="p-6 space-y-8">
 
     <!-- Buttons Section -->
-    <div class="showcase-group">
-        <h2>Buttons</h2>
-        <div class="component-row">
-            <!-- Basic/Text Button -->
-            <button class="custom-btn mat-text-primary mat-font-label-large mat-corner-full">
-                Basic
-            </button>
-
-            <!-- Primary Raised Button -->
-            <button
-                class="custom-btn mat-bg-primary mat-text-on-primary mat-font-label-large mat-corner-full mat-shadow-2">
-                Primary
-            </button>
-
-            <!-- Secondary Stroked Button -->
-            <button class="custom-btn-stroked mat-text-secondary mat-font-label-large mat-corner-full">
-                Secondary
-            </button>
-
-            <!-- Error/Warn Flat Button -->
-            <button class="custom-btn mat-bg-error mat-text-on-error mat-font-label-large mat-corner-full">
-                Error
-            </button>
-
-            <!-- Tertiary Button -->
-            <button class="custom-btn mat-bg-tertiary mat-text-on-tertiary mat-font-label-large mat-corner-full">
-                Tertiary
-            </button>
-
-            <!-- Icon Button -->
-            <button class="custom-icon-btn mat-text-primary mat-corner-full">
-                <mat-icon>favorite</mat-icon>
-            </button>
-
-            <!-- FAB with higher elevation -->
-            <button
-                class="custom-fab mat-bg-primary-container mat-text-on-primary-container mat-corner-large mat-shadow-3">
-                <mat-icon>add</mat-icon>
-            </button>
+    <section class="space-y-4">
+        <h2 class="text-2xl font-bold">Buttons</h2>
+        <div class="flex flex-wrap gap-4">
+            <button hlmBtn variant="default">Default</button>
+            <button hlmBtn variant="secondary">Secondary</button>
+            <button hlmBtn variant="destructive">Destructive</button>
+            <button hlmBtn variant="outline">Outline</button>
+            <button hlmBtn variant="ghost">Ghost</button>
+            <button hlmBtn variant="link">Link</button>
         </div>
-    </div>
-
-    <mat-divider></mat-divider>
-
-    <!-- Form Controls Section -->
-    <div class="showcase-group">
-        <h2>Form Controls</h2>
-        <div class="component-grid">
-            <!-- Custom Inputs -->
-            <div class="col">
-                <div class="custom-input-group">
-                    <label class="mat-text-primary">Email</label>
-                    <input type="email" class="custom-input mat-bg-surface-variant mat-text-on-surface"
-                        placeholder="Enter your email">
-                    <span class="mat-text-on-surface-variant" style="font-size: 0.75rem;">We'll never share your
-                        email</span>
-                </div>
-
-                <div class="custom-input-group">
-                    <label class="mat-text-primary">Password</label>
-                    <input type="password" class="custom-input mat-bg-surface-variant mat-text-on-surface"
-                        placeholder="Enter password">
-                </div>
-            </div>
-
-            <!-- Selection Controls -->
-            <div class="col">
-                <div class="control-stack">
-                    <!-- Custom Checkbox -->
-                    <label class="custom-checkbox">
-                        <input type="checkbox" [(ngModel)]="checkboxChecked">
-                        <span class="checkmark mat-bg-primary"></span>
-                        <span class="mat-text-on-surface">Primary Checkbox</span>
-                    </label>
-
-                    <!-- Custom Radio Buttons -->
-                    <div class="custom-radio-group">
-                        <label class="custom-radio">
-                            <input type="radio" name="radio" value="1" [(ngModel)]="radioValue">
-                            <span class="radio-mark mat-bg-secondary"></span>
-                            <span class="mat-text-on-surface">Option 1</span>
-                        </label>
-                        <label class="custom-radio">
-                            <input type="radio" name="radio" value="2" [(ngModel)]="radioValue">
-                            <span class="radio-mark mat-bg-secondary"></span>
-                            <span class="mat-text-on-surface">Option 2</span>
-                        </label>
-                    </div>
-
-                    <!-- Custom Toggle Switch -->
-                    <label class="custom-toggle">
-                        <input type="checkbox" [(ngModel)]="slideToggleChecked">
-                        <span class="toggle-slider mat-bg-primary"></span>
-                        <span class="mat-text-on-surface">Toggle Switch</span>
-                    </label>
-                </div>
-            </div>
-
-            <!-- Select & Slider -->
-            <div class="col">
-                <div class="custom-input-group">
-                    <label class="mat-text-primary">Select Option</label>
-                    <select class="custom-select mat-bg-surface-variant mat-text-on-surface"
-                        [(ngModel)]="selectedOption">
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
-                    </select>
-                </div>
-
-                <div class="custom-input-group">
-                    <label class="mat-text-on-surface">Slider: {{sliderValue}}</label>
-                    <input type="range" class="custom-slider" min="0" max="100" [(ngModel)]="sliderValue">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <mat-divider></mat-divider>
+    </section>
 
     <!-- Cards Section -->
-    <div class="showcase-group">
-        <h2>Cards</h2>
-        <div class="component-grid">
-            <!-- Primary Card -->
-            <div class="col">
-                <div class="custom-card mat-bg-surface-container mat-corner-large mat-shadow-1">
-                    <div class="card-header">
-                        <div class="card-avatar mat-bg-primary-container"></div>
-                        <div>
-                            <h3 class="mat-text-on-surface">Card Title</h3>
-                            <p class="mat-text-on-surface-variant">Subtitle</p>
-                        </div>
-                    </div>
-                    <div class="card-content mat-text-on-surface">
-                        This is a custom card built with utility classes. It uses Layer 1 variables for colors and
-                        shadows.
-                    </div>
-                    <div class="card-actions">
-                        <button class="custom-btn-text mat-text-primary">Action</button>
-                        <button class="custom-btn-text mat-text-secondary">Share</button>
-                    </div>
+    <section class="space-y-4">
+        <h2 class="text-2xl font-bold">Cards</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div hlmCard>
+                <div hlmCardHeader>
+                    <h3 hlmCardTitle>Card Title</h3>
+                    <p hlmCardDescription>Card Description</p>
+                </div>
+                <div hlmCardContent>
+                    <p>This is the content of the card. It uses the card primitives from Spartan UI.</p>
+                </div>
+                <div hlmCardFooter>
+                    <button hlmBtn variant="outline">Action</button>
                 </div>
             </div>
 
-            <!-- Secondary Card -->
-            <div class="col">
-                <div class="custom-card mat-bg-secondary-container mat-corner-large mat-shadow-2">
-                    <div class="card-header">
-                        <h3 class="mat-text-on-secondary-container">Secondary Card</h3>
-                    </div>
-                    <div class="card-content mat-text-on-secondary-container">
-                        This card uses secondary container colors and demonstrates real-time theme updates.
-                    </div>
+            <div hlmCard>
+                <div hlmCardHeader>
+                    <h3 hlmCardTitle>Another Card</h3>
                 </div>
-            </div>
-
-            <!-- Error Card -->
-            <div class="col">
-                <div class="custom-card mat-bg-error-container mat-corner-large mat-shadow-1">
-                    <div class="card-header">
-                        <h3 class="mat-text-on-error-container">Error State</h3>
-                    </div>
-                    <div class="card-content mat-text-on-error-container">
-                        This card shows error styling using error container colors.
-                    </div>
+                <div hlmCardContent>
+                    <p>Simple card content without description or footer.</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <mat-divider></mat-divider>
-
-    <!-- Chips Section -->
-    <div class="showcase-group">
-        <h2>Chips</h2>
-        <div class="component-row">
-            <span class="custom-chip mat-bg-primary-container mat-text-on-primary-container mat-corner-extra-small">
-                Primary Chip
-            </span>
-            <span class="custom-chip mat-bg-secondary-container mat-text-on-secondary-container">
-                Secondary Chip
-            </span>
-            <span class="custom-chip mat-bg-tertiary-container mat-text-on-tertiary-container">
-                Tertiary Chip
-            </span>
-            <span class="custom-chip mat-bg-surface-variant mat-text-on-surface-variant">
-                Surface Chip
-            </span>
+    <!-- Inputs Section -->
+    <section class="space-y-4">
+        <h2 class="text-2xl font-bold">Inputs</h2>
+        <div class="max-w-sm space-y-4">
+            <input hlmInput placeholder="Default Input" [(ngModel)]="inputValue" />
+            <p class="text-sm text-muted-foreground">Value: {{ inputValue }}</p>
         </div>
-    </div>
+    </section>
 
-    <mat-divider></mat-divider>
+    <!-- Badges Section -->
+    <section class="space-y-4">
+        <h2 class="text-2xl font-bold">Badges</h2>
+        <div class="flex gap-4">
+            <span hlmBadge variant="default">Default</span>
+            <span hlmBadge variant="secondary">Secondary</span>
+            <span hlmBadge variant="destructive">Destructive</span>
+            <span hlmBadge variant="outline">Outline</span>
+        </div>
+    </section>
 
-    <!-- Progress Indicators -->
-    <div class="showcase-group">
-        <h2>Progress Indicators</h2>
-        <div class="component-grid">
-            <div class="col">
-                <label class="mat-text-on-surface-variant">Progress Bar</label>
-                <div class="custom-progress-bar mat-bg-surface-variant">
-                    <div class="progress-fill mat-bg-primary" [style.width.%]="progressValue"></div>
-                </div>
+    <!-- Alerts Section -->
+    <section class="space-y-4">
+        <h2 class="text-2xl font-bold">Alerts</h2>
+        <div hlmAlert>
+            <ng-icon hlm name="lucideInfo" hlmAlertIcon></ng-icon>
+            <h4 hlmAlertTitle>Heads up!</h4>
+            <p hlmAlertDescription>
+                You can add components to your app using the cli.
+            </p>
+        </div>
+    </section>
 
-                <label class="mat-text-on-surface-variant" style="margin-top: 16px;">Indeterminate</label>
-                <div class="custom-progress-bar mat-bg-surface-variant">
-                    <div class="progress-fill-indeterminate mat-bg-secondary"></div>
-                </div>
-            </div>
+    <!-- Utility Gallery -->
+    <section class="space-y-4">
+        <h2 class="text-2xl font-bold">Utility Gallery</h2>
 
-            <div class="col">
-                <label class="mat-text-on-surface-variant">Circular Progress</label>
-                <div class="custom-spinner mat-text-primary">
-                    <svg viewBox="0 0 50 50">
-                        <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4"></circle>
-                    </svg>
-                </div>
+        <h3 class="text-xl font-semibold">Colors</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div *ngFor="let bg of backgrounds" class="p-4 rounded-md border" [ngClass]="bg">
+                {{ bg }}
             </div>
         </div>
-    </div>
+
+        <h3 class="text-xl font-semibold mt-6">Shapes</h3>
+        <div class="flex flex-wrap gap-4">
+            <div *ngFor="let shape of shapes"
+                class="w-24 h-24 bg-primary flex items-center justify-center text-primary-foreground text-xs"
+                [ngClass]="shape">
+                {{ shape }}
+            </div>
+        </div>
+    </section>
 
 </div>
