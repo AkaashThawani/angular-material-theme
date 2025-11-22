@@ -1,0 +1,225 @@
+<div class="showcase-container">
+
+    <!-- Buttons Section -->
+    <div class="showcase-group">
+        <h2>Buttons</h2>
+        <div class="component-row">
+            <!-- Basic/Text Button -->
+            <button class="custom-btn mat-text-primary mat-font-label-large mat-corner-full">
+                Basic
+            </button>
+
+            <!-- Primary Raised Button -->
+            <button
+                class="custom-btn mat-bg-primary mat-text-on-primary mat-font-label-large mat-corner-full mat-shadow-2">
+                Primary
+            </button>
+
+            <!-- Secondary Stroked Button -->
+            <button class="custom-btn-stroked mat-text-secondary mat-font-label-large mat-corner-full">
+                Secondary
+            </button>
+
+            <!-- Error/Warn Flat Button -->
+            <button class="custom-btn mat-bg-error mat-text-on-error mat-font-label-large mat-corner-full">
+                Error
+            </button>
+
+            <!-- Tertiary Button -->
+            <button class="custom-btn mat-bg-tertiary mat-text-on-tertiary mat-font-label-large mat-corner-full">
+                Tertiary
+            </button>
+
+            <!-- Icon Button -->
+            <button class="custom-icon-btn mat-text-primary mat-corner-full">
+                <mat-icon>favorite</mat-icon>
+            </button>
+
+            <!-- FAB with higher elevation -->
+            <button
+                class="custom-fab mat-bg-primary-container mat-text-on-primary-container mat-corner-large mat-shadow-3">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- Form Controls Section -->
+    <div class="showcase-group">
+        <h2>Form Controls</h2>
+        <div class="component-grid">
+            <!-- Custom Inputs -->
+            <div class="col">
+                <div class="custom-input-group">
+                    <label class="mat-text-primary">Email</label>
+                    <input type="email" class="custom-input mat-bg-surface-variant mat-text-on-surface"
+                        placeholder="Enter your email">
+                    <span class="mat-text-on-surface-variant" style="font-size: 0.75rem;">We'll never share your
+                        email</span>
+                </div>
+
+                <div class="custom-input-group">
+                    <label class="mat-text-primary">Password</label>
+                    <input type="password" class="custom-input mat-bg-surface-variant mat-text-on-surface"
+                        placeholder="Enter password">
+                </div>
+            </div>
+
+            <!-- Selection Controls -->
+            <div class="col">
+                <div class="control-stack">
+                    <!-- Custom Checkbox -->
+                    <label class="custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="checkboxChecked">
+                        <span class="checkmark mat-bg-primary"></span>
+                        <span class="mat-text-on-surface">Primary Checkbox</span>
+                    </label>
+
+                    <!-- Custom Radio Buttons -->
+                    <div class="custom-radio-group">
+                        <label class="custom-radio">
+                            <input type="radio" name="radio" value="1" [(ngModel)]="radioValue">
+                            <span class="radio-mark mat-bg-secondary"></span>
+                            <span class="mat-text-on-surface">Option 1</span>
+                        </label>
+                        <label class="custom-radio">
+                            <input type="radio" name="radio" value="2" [(ngModel)]="radioValue">
+                            <span class="radio-mark mat-bg-secondary"></span>
+                            <span class="mat-text-on-surface">Option 2</span>
+                        </label>
+                    </div>
+
+                    <!-- Custom Toggle Switch -->
+                    <label class="custom-toggle">
+                        <input type="checkbox" [(ngModel)]="slideToggleChecked">
+                        <span class="toggle-slider mat-bg-primary"></span>
+                        <span class="mat-text-on-surface">Toggle Switch</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Select & Slider -->
+            <div class="col">
+                <div class="custom-input-group">
+                    <label class="mat-text-primary">Select Option</label>
+                    <select class="custom-select mat-bg-surface-variant mat-text-on-surface"
+                        [(ngModel)]="selectedOption">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
+                </div>
+
+                <div class="custom-input-group">
+                    <label class="mat-text-on-surface">Slider: {{sliderValue}}</label>
+                    <input type="range" class="custom-slider" min="0" max="100" [(ngModel)]="sliderValue">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- Cards Section -->
+    <div class="showcase-group">
+        <h2>Cards</h2>
+        <div class="component-grid">
+            <!-- Primary Card -->
+            <div class="col">
+                <div class="custom-card mat-bg-surface-container mat-corner-large mat-shadow-1">
+                    <div class="card-header">
+                        <div class="card-avatar mat-bg-primary-container"></div>
+                        <div>
+                            <h3 class="mat-text-on-surface">Card Title</h3>
+                            <p class="mat-text-on-surface-variant">Subtitle</p>
+                        </div>
+                    </div>
+                    <div class="card-content mat-text-on-surface">
+                        This is a custom card built with utility classes. It uses Layer 1 variables for colors and
+                        shadows.
+                    </div>
+                    <div class="card-actions">
+                        <button class="custom-btn-text mat-text-primary">Action</button>
+                        <button class="custom-btn-text mat-text-secondary">Share</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary Card -->
+            <div class="col">
+                <div class="custom-card mat-bg-secondary-container mat-corner-large mat-shadow-2">
+                    <div class="card-header">
+                        <h3 class="mat-text-on-secondary-container">Secondary Card</h3>
+                    </div>
+                    <div class="card-content mat-text-on-secondary-container">
+                        This card uses secondary container colors and demonstrates real-time theme updates.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Card -->
+            <div class="col">
+                <div class="custom-card mat-bg-error-container mat-corner-large mat-shadow-1">
+                    <div class="card-header">
+                        <h3 class="mat-text-on-error-container">Error State</h3>
+                    </div>
+                    <div class="card-content mat-text-on-error-container">
+                        This card shows error styling using error container colors.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- Chips Section -->
+    <div class="showcase-group">
+        <h2>Chips</h2>
+        <div class="component-row">
+            <span class="custom-chip mat-bg-primary-container mat-text-on-primary-container mat-corner-extra-small">
+                Primary Chip
+            </span>
+            <span class="custom-chip mat-bg-secondary-container mat-text-on-secondary-container">
+                Secondary Chip
+            </span>
+            <span class="custom-chip mat-bg-tertiary-container mat-text-on-tertiary-container">
+                Tertiary Chip
+            </span>
+            <span class="custom-chip mat-bg-surface-variant mat-text-on-surface-variant">
+                Surface Chip
+            </span>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- Progress Indicators -->
+    <div class="showcase-group">
+        <h2>Progress Indicators</h2>
+        <div class="component-grid">
+            <div class="col">
+                <label class="mat-text-on-surface-variant">Progress Bar</label>
+                <div class="custom-progress-bar mat-bg-surface-variant">
+                    <div class="progress-fill mat-bg-primary" [style.width.%]="progressValue"></div>
+                </div>
+
+                <label class="mat-text-on-surface-variant" style="margin-top: 16px;">Indeterminate</label>
+                <div class="custom-progress-bar mat-bg-surface-variant">
+                    <div class="progress-fill-indeterminate mat-bg-secondary"></div>
+                </div>
+            </div>
+
+            <div class="col">
+                <label class="mat-text-on-surface-variant">Circular Progress</label>
+                <div class="custom-spinner mat-text-primary">
+                    <svg viewBox="0 0 50 50">
+                        <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4"></circle>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

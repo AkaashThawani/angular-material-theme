@@ -106,6 +106,13 @@
   --mat-sys-corner-large: 16px;
   --mat-sys-corner-extra-large: 28px;
   --mat-sys-corner-full: 9999px;
+
+  /* Elevation */
+  --mat-sys-shadow-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --mat-sys-shadow-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --mat-sys-shadow-3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+  --mat-sys-shadow-4: 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15);
+  --mat-sys-shadow-5: 0px 4px 4px 0px rgba(0, 0, 0, 0.3), 0px 8px 12px 6px rgba(0, 0, 0, 0.15);
 }
 
 html,
@@ -132,4 +139,90 @@ html {
   @include mat.system-level-colors($theme);
   @include mat.system-level-typography($theme);
   @include mat.system-classes();
+}
+
+/* Layer 2: Manual Utility Class Generation */
+/* Backgrounds */
+$colors: (
+  "primary",
+  "on-primary",
+  "primary-container",
+  "on-primary-container",
+  "secondary",
+  "on-secondary",
+  "secondary-container",
+  "on-secondary-container",
+  "tertiary",
+  "on-tertiary",
+  "tertiary-container",
+  "on-tertiary-container",
+  "error",
+  "on-error",
+  "error-container",
+  "on-error-container",
+  "surface",
+  "on-surface",
+  "surface-variant",
+  "on-surface-variant",
+  "inverse-surface",
+  "inverse-on-surface",
+  "background",
+  "on-background",
+  "surface-container-lowest",
+  "surface-container-low",
+  "surface-container",
+  "surface-container-high",
+  "surface-container-highest"
+);
+
+@each $color in $colors {
+  .mat-bg-#{$color} {
+    background-color: var(--mat-sys-#{$color}) !important;
+  }
+
+  .mat-text-#{$color} {
+    color: var(--mat-sys-#{$color}) !important;
+  }
+}
+
+/* Shapes */
+$shapes: (
+  "extra-small",
+  "small",
+  "medium",
+  "large",
+  "extra-large",
+  "full"
+);
+
+@each $shape in $shapes {
+  .mat-corner-#{$shape} {
+    border-radius: var(--mat-sys-corner-#{$shape}) !important;
+  }
+}
+
+/* Shadows */
+$levels: 1, 2, 3, 4, 5;
+
+@each $level in $levels {
+  .mat-shadow-#{$level} {
+    box-shadow: var(--mat-sys-shadow-#{$level}) !important;
+  }
+}
+
+.mat-shadow-0 {
+  box-shadow: none !important;
+}
+
+/* Typography - Font utilities */
+$types: "display", "headline", "title", "body", "label";
+$sizes: "large", "medium", "small";
+
+@each $type in $types {
+  @each $size in $sizes {
+    .mat-font-#{$type}-#{$size} {
+      font: var(--mat-sys-#{$type}-#{$size}) !important;
+      letter-spacing: var(--mat-sys-#{$type}-#{$size}-tracking) !important;
+    }
+  }
 }

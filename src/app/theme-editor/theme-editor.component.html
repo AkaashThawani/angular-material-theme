@@ -73,35 +73,78 @@
                                 <p class="variable-description-panel">{{ variable.description }}</p>
 
                                 <div class="shadow-inputs" *ngIf="variable.shadow">
-                                    <div class="shadow-field">
-                                        <label>Offset X</label>
-                                        <input type="text" [value]="variable.shadow.offsetX"
-                                            (input)="updateShadow(variable, 'offsetX', $event)">
-                                    </div>
-                                    <div class="shadow-field">
-                                        <label>Offset Y</label>
-                                        <input type="text" [value]="variable.shadow.offsetY"
-                                            (input)="updateShadow(variable, 'offsetY', $event)">
-                                    </div>
-                                    <div class="shadow-field">
-                                        <label>Blur</label>
-                                        <input type="text" [value]="variable.shadow.blur"
-                                            (input)="updateShadow(variable, 'blur', $event)">
-                                    </div>
-                                    <div class="shadow-field">
-                                        <label>Spread</label>
-                                        <input type="text" [value]="variable.shadow.spread"
-                                            (input)="updateShadow(variable, 'spread', $event)">
-                                    </div>
-                                    <div class="shadow-field full-width">
-                                        <label>Color</label>
-                                        <div class="color-input-group">
-                                            <div class="color-preview" [style.background-color]="variable.shadow.color">
-                                                <input type="color" [value]="variable.shadow.color"
-                                                    (input)="updateShadow(variable, 'color', $event)">
+                                    <!-- Key Shadow Layer -->
+                                    <div class="shadow-layer-group">
+                                        <div class="layer-label">Key Shadow</div>
+                                        <div class="shadow-field">
+                                            <label>Offset X</label>
+                                            <input type="text" [value]="variable.shadow.key.offsetX"
+                                                (input)="updateShadow(variable, 'key', 'offsetX', $event)">
+                                        </div>
+                                        <div class="shadow-field">
+                                            <label>Offset Y</label>
+                                            <input type="text" [value]="variable.shadow.key.offsetY"
+                                                (input)="updateShadow(variable, 'key', 'offsetY', $event)">
+                                        </div>
+                                        <div class="shadow-field">
+                                            <label>Blur</label>
+                                            <input type="text" [value]="variable.shadow.key.blur"
+                                                (input)="updateShadow(variable, 'key', 'blur', $event)">
+                                        </div>
+                                        <div class="shadow-field">
+                                            <label>Spread</label>
+                                            <input type="text" [value]="variable.shadow.key.spread"
+                                                (input)="updateShadow(variable, 'key', 'spread', $event)">
+                                        </div>
+                                        <div class="shadow-field full-width">
+                                            <label>Color</label>
+                                            <div class="color-input-group">
+                                                <div class="color-preview"
+                                                    [style.background-color]="variable.shadow.key.color">
+                                                    <input type="color" [value]="variable.shadow.key.color"
+                                                        (input)="updateShadow(variable, 'key', 'color', $event)">
+                                                </div>
+                                                <input type="text" class="hex-input" [value]="variable.shadow.key.color"
+                                                    (input)="updateShadow(variable, 'key', 'color', $event)">
                                             </div>
-                                            <input type="text" class="hex-input" [value]="variable.shadow.color"
-                                                (input)="updateShadow(variable, 'color', $event)">
+                                        </div>
+                                    </div>
+
+                                    <!-- Ambient Shadow Layer -->
+                                    <div class="shadow-layer-group">
+                                        <div class="layer-label">Ambient Shadow</div>
+                                        <div class="shadow-field">
+                                            <label>Offset X</label>
+                                            <input type="text" [value]="variable.shadow.ambient.offsetX"
+                                                (input)="updateShadow(variable, 'ambient', 'offsetX', $event)">
+                                        </div>
+                                        <div class="shadow-field">
+                                            <label>Offset Y</label>
+                                            <input type="text" [value]="variable.shadow.ambient.offsetY"
+                                                (input)="updateShadow(variable, 'ambient', 'offsetY', $event)">
+                                        </div>
+                                        <div class="shadow-field">
+                                            <label>Blur</label>
+                                            <input type="text" [value]="variable.shadow.ambient.blur"
+                                                (input)="updateShadow(variable, 'ambient', 'blur', $event)">
+                                        </div>
+                                        <div class="shadow-field">
+                                            <label>Spread</label>
+                                            <input type="text" [value]="variable.shadow.ambient.spread"
+                                                (input)="updateShadow(variable, 'ambient', 'spread', $event)">
+                                        </div>
+                                        <div class="shadow-field full-width">
+                                            <label>Color</label>
+                                            <div class="color-input-group">
+                                                <div class="color-preview"
+                                                    [style.background-color]="variable.shadow.ambient.color">
+                                                    <input type="color" [value]="variable.shadow.ambient.color"
+                                                        (input)="updateShadow(variable, 'ambient', 'color', $event)">
+                                                </div>
+                                                <input type="text" class="hex-input"
+                                                    [value]="variable.shadow.ambient.color"
+                                                    (input)="updateShadow(variable, 'ambient', 'color', $event)">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

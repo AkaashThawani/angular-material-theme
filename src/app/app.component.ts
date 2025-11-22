@@ -10,6 +10,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { ThemeEditorComponent } from './theme-editor/theme-editor.component';
+import { ComponentsShowcaseComponent } from './components-showcase/components-showcase';
 
 @Component({
     selector: 'app-root',
@@ -25,7 +26,8 @@ import { ThemeEditorComponent } from './theme-editor/theme-editor.component';
         MatRadioModule,
         MatSidenavModule,
         MatIconModule,
-        ThemeEditorComponent
+        ThemeEditorComponent,
+        ComponentsShowcaseComponent
     ],
     templateUrl: './app.component.html',
     styleUrls: ['./app.scss']
@@ -47,6 +49,14 @@ export class AppComponent {
         // Update currentSection if it changed
         if (newSection !== this.currentSection && newSection >= 0 && newSection <= 3) {
             this.currentSection = newSection;
+        }
+    }
+
+    scrollToSection(index: number) {
+        const sections = ['components-section'];
+        const element = document.getElementById(sections[index]);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
         }
     }
 }

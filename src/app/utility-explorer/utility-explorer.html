@@ -1,0 +1,114 @@
+<div class="explorer-container">
+    <div class="header">
+        <h2>Utility Explorer (Layer 2)</h2>
+        <p>Explore and test the utility classes generated from the system variables.</p>
+    </div>
+
+    <mat-tab-group animationDuration="0ms">
+        <!-- TAB 1: SHOWCASE -->
+        <mat-tab label="Showcase">
+            <div class="showcase-content">
+
+                <!-- Backgrounds -->
+                <section>
+                    <h3>Backgrounds</h3>
+                    <div class="grid-container">
+                        <div *ngFor="let bg of backgrounds" [class]="bg + ' showcase-box'">
+                            <span class="label">{{ bg }}</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Text Colors -->
+                <section>
+                    <h3>Text Colors</h3>
+                    <div class="grid-container">
+                        <div *ngFor="let text of textColors" class="mat-bg-surface showcase-box">
+                            <span [class]="text">{{ text }}</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Shapes -->
+                <section>
+                    <h3>Shapes</h3>
+                    <div class="grid-container">
+                        <div *ngFor="let shape of shapes" [class]="shape + ' mat-bg-primary showcase-box shape-box'">
+                            <span class="mat-text-on-primary">{{ shape }}</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Shadows -->
+                <section>
+                    <h3>Shadows</h3>
+                    <div class="grid-container">
+                        <div *ngFor="let shadow of shadows" [class]="shadow + ' mat-bg-surface showcase-box'">
+                            <span class="mat-text-on-surface">{{ shadow }}</span>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </mat-tab>
+
+        <!-- TAB 2: PLAYGROUND -->
+        <mat-tab label="Playground">
+            <div class="playground-content">
+
+                <!-- Controls -->
+                <div class="controls-panel">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Background</mat-label>
+                        <mat-select [(ngModel)]="selectedBg">
+                            <mat-option *ngFor="let bg of backgrounds" [value]="bg">{{ bg }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Text Color</mat-label>
+                        <mat-select [(ngModel)]="selectedText">
+                            <mat-option *ngFor="let text of textColors" [value]="text">{{ text }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Shape</mat-label>
+                        <mat-select [(ngModel)]="selectedShape">
+                            <mat-option *ngFor="let shape of shapes" [value]="shape">{{ shape }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Shadow</mat-label>
+                        <mat-select [(ngModel)]="selectedShadow">
+                            <mat-option *ngFor="let shadow of shadows" [value]="shadow">{{ shadow }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <!-- Preview -->
+                <div class="preview-area">
+                    <h3>Preview</h3>
+                    <div class="preview-box-wrapper">
+                        <div
+                            [class]="selectedBg + ' ' + selectedText + ' ' + selectedShape + ' ' + selectedShadow + ' preview-box'">
+                            <div class="preview-content">
+                                <h2>Sample Heading</h2>
+                                <p>This is a sample paragraph to demonstrate the selected utility classes.</p>
+                                <button mat-button class="mat-bg-primary mat-text-on-primary">Button</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Snippet -->
+                <div class="code-area">
+                    <h3>Generated HTML</h3>
+                    <pre><code>{{ generatedHtml }}</code></pre>
+                </div>
+
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

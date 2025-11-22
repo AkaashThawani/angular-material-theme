@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-export interface ShadowComponents {
+export interface ShadowLayer {
     offsetX: string;
     offsetY: string;
     blur: string;
     spread: string;
     color: string;
+}
+
+export interface ShadowDefinition {
+    key: ShadowLayer;
+    ambient: ShadowLayer;
 }
 
 export interface ThemeVariable {
@@ -22,7 +27,7 @@ export interface ThemeVariable {
         lineHeight: string;
         family: string;
     };
-    shadow?: ShadowComponents;
+    shadow?: ShadowDefinition;
 }
 
 @Injectable({
@@ -111,11 +116,11 @@ export class ThemeService {
         { name: '--mat-sys-corner-full', value: '9999px', label: 'Corner Full', type: 'text', group: 'Shape', description: 'Full circle radius (buttons).' },
 
         // Elevation
-        { name: '--mat-sys-level1', value: '0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)', label: 'Level 1', type: 'shadow', group: 'Effects', description: 'Lowest elevation shadow.' },
-        { name: '--mat-sys-level2', value: '0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15)', label: 'Level 2', type: 'shadow', group: 'Effects', description: 'Low elevation shadow.' },
-        { name: '--mat-sys-level3', value: '0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15)', label: 'Level 3', type: 'shadow', group: 'Effects', description: 'Medium elevation shadow.' },
-        { name: '--mat-sys-level4', value: '0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15)', label: 'Level 4', type: 'shadow', group: 'Effects', description: 'High elevation shadow.' },
-        { name: '--mat-sys-level5', value: '0px 4px 4px 0px rgba(0, 0, 0, 0.3), 0px 8px 12px 6px rgba(0, 0, 0, 0.15)', label: 'Level 5', type: 'shadow', group: 'Effects', description: 'Highest elevation shadow.' },
+        { name: '--mat-sys-shadow-1', value: '0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)', label: 'Shadow 1', type: 'shadow', group: 'Effects', description: 'Lowest elevation shadow.' },
+        { name: '--mat-sys-shadow-2', value: '0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15)', label: 'Shadow 2', type: 'shadow', group: 'Effects', description: 'Low elevation shadow.' },
+        { name: '--mat-sys-shadow-3', value: '0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15)', label: 'Shadow 3', type: 'shadow', group: 'Effects', description: 'Medium elevation shadow.' },
+        { name: '--mat-sys-shadow-4', value: '0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15)', label: 'Shadow 4', type: 'shadow', group: 'Effects', description: 'High elevation shadow.' },
+        { name: '--mat-sys-shadow-5', value: '0px 4px 4px 0px rgba(0, 0, 0, 0.3), 0px 8px 12px 6px rgba(0, 0, 0, 0.15)', label: 'Shadow 5', type: 'shadow', group: 'Effects', description: 'Highest elevation shadow.' },
     ];
 
     private variablesSubject = new BehaviorSubject<ThemeVariable[]>(this.variables);
@@ -129,6 +134,8 @@ export class ThemeService {
             if (v.type === 'shadow') {
                 v.shadow = this.parseShadow(v.value);
             }
+            // Ensure variable is set on DOM to match Service state
+            document.documentElement.style.setProperty(v.name, v.value);
         });
     }
 
@@ -160,13 +167,23 @@ export class ThemeService {
         }
     }
 
-    updateShadow(name: string, part: keyof ShadowComponents, value: string) {
+    updateShadow(name: string, layer: 'key' | 'ambient', part: keyof ShadowLayer, value: string) {
         const variable = this.variables.find(v => v.name === name);
         if (variable && variable.shadow) {
-            variable.shadow[part] = value;
-            // Reconstruct the box-shadow value (first layer only)
-            const newValue = `${variable.shadow.offsetX} ${variable.shadow.offsetY} ${variable.shadow.blur} ${variable.shadow.spread} ${variable.shadow.color}`;
-            this.updateVariable(name, newValue);
+            variable.shadow[layer][part] = value;
+
+            // Reconstruct shadow string from both layers
+            const key = variable.shadow.key;
+            const ambient = variable.shadow.ambient;
+
+            const keyString = `${key.offsetX} ${key.offsetY} ${key.blur} ${key.spread} ${key.color}`;
+            const ambientString = `${ambient.offsetX} ${ambient.offsetY} ${ambient.blur} ${ambient.spread} ${ambient.color}`;
+
+            const newValue = `${keyString}, ${ambientString}`;
+
+            variable.value = newValue;
+            document.documentElement.style.setProperty(name, newValue);
+            this.variablesSubject.next([...this.variables]);
         }
     }
 
@@ -187,42 +204,53 @@ export class ThemeService {
         return { weight: '400', size: '14px', lineHeight: '20px', family: 'Roboto, sans-serif' };
     }
 
-    private parseShadow(value: string): ShadowComponents {
-        // Parse box-shadow value (first layer only)
+    private parseShadow(value: string): ShadowDefinition {
+        // Parse box-shadow value into two layers: Key and Ambient
         // Material shadows have two layers: "0px 1px 2px 0px rgba(...), 0px 1px 3px 1px rgba(...)"
-        // We'll parse the first layer for editing
-        // Also supports hex colors from color picker
 
-        // Extract first shadow layer (before comma if multiple)
-        const firstLayer = value.split(',')[0].trim();
-
-        // Try to match with rgba/rgb color first
-        let regex = /^([-\d.]+px)\s+([-\d.]+px)\s+([-\d.]+px)\s+([-\d.]+px)\s+(rgba?\([^)]+\))$/;
-        let match = firstLayer.match(regex);
-
-        // If that fails, try hex color format
-        if (!match) {
-            regex = /^([-\d.]+px)\s+([-\d.]+px)\s+([-\d.]+px)\s+([-\d.]+px)\s+(#[0-9a-fA-F]{3,8})$/;
-            match = firstLayer.match(regex);
-        }
-
-        if (match) {
-            return {
-                offsetX: match[1],
-                offsetY: match[2],
-                blur: match[3],
-                spread: match[4],
-                color: match[5]
-            };
-        }
-
-        // If parsing fails, use fallback
-        return {
+        // Default fallback
+        const defaultLayer: ShadowLayer = {
             offsetX: '0px',
             offsetY: '1px',
             blur: '2px',
             spread: '0px',
             color: 'rgba(0, 0, 0, 0.3)'
+        };
+
+        // Split by comma, but be careful about commas inside rgba()
+        // We can use a regex to split by comma that is NOT inside parentheses
+        const parts = value.split(/,(?![^(]*\))/);
+
+        const parseLayer = (layerStr: string): ShadowLayer => {
+            if (!layerStr) return { ...defaultLayer };
+
+            const trimmed = layerStr.trim();
+
+            // Regex to match:
+            // 1. Offset X (number with optional px)
+            // 2. Offset Y (number with optional px)
+            // 3. Blur (number with optional px)
+            // 4. Spread (number with optional px)
+            // 5. Color (rgba/rgb or hex)
+            const regex = /^([-\d.]+(?:px)?)\s+([-\d.]+(?:px)?)\s+([-\d.]+(?:px)?)\s+([-\d.]+(?:px)?)\s+(rgba?\([^)]+\)|#[0-9a-fA-F]{3,8})/;
+            const match = trimmed.match(regex);
+
+            if (match) {
+                return {
+                    offsetX: match[1],
+                    offsetY: match[2],
+                    blur: match[3],
+                    spread: match[4],
+                    color: match[5]
+                };
+            }
+
+            return { ...defaultLayer };
+        };
+
+        return {
+            key: parseLayer(parts[0]),
+            ambient: parseLayer(parts[1])
         };
     }
 }

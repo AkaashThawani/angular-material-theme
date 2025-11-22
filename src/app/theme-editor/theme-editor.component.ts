@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ThemeService, ThemeVariable, ShadowComponents } from '../theme.service';
+import { ThemeService, ThemeVariable } from '../theme.service';
 
 import { MatExpansionModule } from '@angular/material/expansion';
 
@@ -28,6 +28,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 })
 export class ThemeEditorComponent implements OnInit, OnChanges {
     @Input() activeSection: number = 0;
+    @Output() tabChange = new EventEmitter<number>();
 
     groups: string[] = [];
     variables: ThemeVariable[] = [];
@@ -48,7 +49,8 @@ export class ThemeEditorComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges) {
         if (changes['activeSection'] && !changes['activeSection'].firstChange) {
             // Auto-switch tab based on active section
-            // 0: Colors, 1: Typography, 2: Shape, 3: Effects
+            // Auto-switch tab based on active section
+            // 0: Components, 1: Colors, 2: Typography, 3: Shape, 4: Effects, 5: Utilities
             this.selectedTabIndex = this.activeSection;
         }
     }
@@ -92,8 +94,8 @@ export class ThemeEditorComponent implements OnInit, OnChanges {
         this.themeService.updateTypography(variable.name, part, value);
     }
 
-    updateShadow(variable: ThemeVariable, part: keyof ShadowComponents, event: Event) {
+    updateShadow(variable: ThemeVariable, layer: 'key' | 'ambient', part: 'offsetX' | 'offsetY' | 'blur' | 'spread' | 'color', event: Event) {
         const value = (event.target as HTMLInputElement).value;
-        this.themeService.updateShadow(variable.name, part, value);
+        this.themeService.updateShadow(variable.name, layer, part, value);
     }
 }
