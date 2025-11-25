@@ -1,97 +1,436 @@
-<div class="p-6 space-y-8">
+<div class="p-6 space-y-6" [style.font-size]="'var(--font-size)'" [style.line-height]="'var(--line-height)'"
+    [style.letter-spacing]="'var(--letter-spacing)'">
 
-    <!-- Buttons Section -->
-    <section class="space-y-4">
-        <h2 class="text-2xl font-bold">Buttons</h2>
-        <div class="flex flex-wrap gap-4">
+    <!-- Hero Section with Background -->
+    <div class="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 border border-border"
+        [style.box-shadow]="'var(--shadow)'">
+        <h1 class="text-4xl font-bold mb-2">Design System Showcase</h1>
+        <p class="text-muted-foreground mb-4">Explore all components with live theme editing</p>
+        <div class="flex gap-3">
+            <button hlmBtn variant="default">Get Started</button>
+            <button hlmBtn variant="outline">Learn More</button>
+        </div>
+    </div>
+
+    <!-- Row 1: Stats Cards with Shadows -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader class="pb-2">
+                <h3 hlmCardTitle class="text-sm font-medium">Total Revenue</h3>
+            </div>
+            <div hlmCardContent>
+                <div class="text-2xl font-bold">$45,231</div>
+                <p class="text-xs text-muted-foreground">+20.1% from last month</p>
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader class="pb-2">
+                <h3 hlmCardTitle class="text-sm font-medium">Active Users</h3>
+            </div>
+            <div hlmCardContent>
+                <div class="text-2xl font-bold">+2,350</div>
+                <p class="text-xs text-muted-foreground">+180% from last month</p>
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader class="pb-2">
+                <h3 hlmCardTitle class="text-sm font-medium">Sales</h3>
+            </div>
+            <div hlmCardContent>
+                <div class="text-2xl font-bold">+12,234</div>
+                <p class="text-xs text-muted-foreground">+19% from last month</p>
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader class="pb-2">
+                <h3 hlmCardTitle class="text-sm font-medium">Active Now</h3>
+            </div>
+            <div hlmCardContent>
+                <div class="text-2xl font-bold">+573</div>
+                <p class="text-xs text-muted-foreground">+201 since last hour</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Divider with Border -->
+    <div class="border-t-2 border-border my-6"></div>
+
+    <!-- Navigation Pills (non-card elements) -->
+    <div class="flex flex-wrap gap-2 p-4 bg-muted/30 rounded-lg border border-border">
+        <button class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+            [style.border-radius]="'var(--radius)'">
+            Dashboard
+        </button>
+        <button
+            class="px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/90 transition-colors"
+            [style.border-radius]="'var(--radius)'">
+            Analytics
+        </button>
+        <button class="px-4 py-2 bg-accent text-accent-foreground rounded-md hover:bg-accent/90 transition-colors"
+            [style.border-radius]="'var(--radius)'">
+            Reports
+        </button>
+        <button class="px-4 py-2 bg-muted text-muted-foreground rounded-md hover:bg-muted/90 transition-colors"
+            [style.border-radius]="'var(--radius)'">
+            Settings
+        </button>
+    </div>
+
+    <!-- Row 2: Diverse Content Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Upload Progress</h3>
+            </div>
+            <div hlmCardContent class="space-y-4">
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs">
+                        <span>Files</span>
+                        <span>{{progress1}}%</span>
+                    </div>
+                    <hlm-progress [value]="progress1" />
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs">
+                        <span>Images</span>
+                        <span>{{progress2}}%</span>
+                    </div>
+                    <hlm-progress [value]="progress2" />
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs">
+                        <span>Videos</span>
+                        <span>{{progress3}}%</span>
+                    </div>
+                    <hlm-progress [value]="progress3" />
+                </div>
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Notifications</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <div class="flex items-start gap-2">
+                    <div class="w-2 h-2 rounded-full bg-primary mt-1"></div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">New message</p>
+                        <p class="text-xs text-muted-foreground">2m ago</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-2">
+                    <div class="w-2 h-2 rounded-full bg-secondary mt-1"></div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">Payment received</p>
+                        <p class="text-xs text-muted-foreground">1h ago</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-2">
+                    <div class="w-2 h-2 rounded-full bg-muted mt-1"></div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">Update available</p>
+                        <p class="text-xs text-muted-foreground">3h ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Quick Actions</h3>
+            </div>
+            <div hlmCardContent class="space-y-2">
+                <button hlmBtn variant="outline" class="w-full justify-start" size="sm">
+                    Create New Project
+                </button>
+                <button hlmBtn variant="outline" class="w-full justify-start" size="sm">
+                    Upload Files
+                </button>
+                <button hlmBtn variant="outline" class="w-full justify-start" size="sm">
+                    Invite Team
+                </button>
+                <button hlmBtn variant="outline" class="w-full justify-start" size="sm">
+                    View Reports
+                </button>
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">System Status</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">API</span>
+                    <span hlmBadge variant="default" class="text-xs">Operational</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Database</span>
+                    <span hlmBadge variant="default" class="text-xs">Healthy</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">CDN</span>
+                    <span hlmBadge variant="secondary" class="text-xs">Degraded</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Storage</span>
+                    <span hlmBadge variant="default" class="text-xs">Online</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Banners (non-card elements) -->
+    <div class="space-y-3">
+        <div hlmAlert>
+            <ng-icon hlm name="lucideInfo" hlmAlertIcon></ng-icon>
+            <h4 hlmAlertTitle>System Update</h4>
+            <p hlmAlertDescription>
+                A new version is available. Update now to get the latest features.
+            </p>
+        </div>
+        <div hlmAlert variant="destructive">
+            <ng-icon hlm name="lucideInfo" hlmAlertIcon></ng-icon>
+            <h4 hlmAlertTitle>Action Required</h4>
+            <p hlmAlertDescription>
+                Your payment method needs to be updated to continue service.
+            </p>
+        </div>
+    </div>
+
+    <!-- Row 3: Form & Input Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Text Inputs</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <input hlmInput type="text" placeholder="Name" class="text-sm" />
+                <input hlmInput type="email" placeholder="Email" class="text-sm" />
+                <input hlmInput type="password" placeholder="Password" class="text-sm" />
+                <input hlmInput type="search" placeholder="Search..." class="text-sm" />
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Number & Date</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <input hlmInput type="number" placeholder="Age" class="text-sm" />
+                <input hlmInput type="date" class="text-sm" />
+                <input hlmInput type="time" class="text-sm" />
+                <input hlmInput type="tel" placeholder="Phone" class="text-sm" />
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Special Inputs</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <input hlmInput type="url" placeholder="Website" class="text-sm" />
+                <input hlmInput type="color" value="#3b82f6" class="text-sm" />
+                <input hlmInput type="range" class="text-sm" />
+                <input hlmInput type="file" class="text-sm" />
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Text Area</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <textarea hlmInput rows="3" placeholder="Description..." class="text-sm"></textarea>
+                <div class="flex items-center gap-2">
+                    <hlm-checkbox [(checked)]="isChecked" />
+                    <span class="text-xs">I agree</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Enable</span>
+                    <hlm-switch [(checked)]="isSwitchOn" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Separator with custom styling -->
+    <hlm-separator class="my-8" />
+
+    <!-- Button Showcase (non-card) -->
+    <div class="p-6 bg-muted/20 rounded-lg border border-border" [style.border-radius]="'var(--radius)'"
+        [style.box-shadow]="'var(--shadow)'">
+        <h3 class="text-lg font-semibold mb-4">Button Variants</h3>
+        <div class="flex flex-wrap gap-3">
             <button hlmBtn variant="default">Default</button>
             <button hlmBtn variant="secondary">Secondary</button>
             <button hlmBtn variant="destructive">Destructive</button>
             <button hlmBtn variant="outline">Outline</button>
             <button hlmBtn variant="ghost">Ghost</button>
             <button hlmBtn variant="link">Link</button>
+            <button hlmBtn size="sm">Small</button>
+            <button hlmBtn size="lg">Large</button>
         </div>
-    </section>
+    </div>
 
-    <!-- Cards Section -->
-    <section class="space-y-4">
-        <h2 class="text-2xl font-bold">Cards</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div hlmCard>
-                <div hlmCardHeader>
-                    <h3 hlmCardTitle>Card Title</h3>
-                    <p hlmCardDescription>Card Description</p>
+    <!-- Row 4: Chat, Table, Buttons, Badges -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Messages</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <div class="flex gap-2">
+                    <div
+                        class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-semibold">
+                        JD
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">John Doe</p>
+                        <p class="text-xs text-muted-foreground">Hey there!</p>
+                    </div>
                 </div>
-                <div hlmCardContent>
-                    <p>This is the content of the card. It uses the card primitives from Spartan UI.</p>
-                </div>
-                <div hlmCardFooter>
-                    <button hlmBtn variant="outline">Action</button>
+                <div class="flex gap-2">
+                    <div
+                        class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-secondary-foreground text-xs font-semibold">
+                        AS
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">Alice</p>
+                        <p class="text-xs text-muted-foreground">Review my PR?</p>
+                    </div>
                 </div>
             </div>
+            <div hlmCardFooter class="pt-3">
+                <input hlmInput placeholder="Type..." class="text-sm" />
+            </div>
+        </div>
 
-            <div hlmCard>
-                <div hlmCardHeader>
-                    <h3 hlmCardTitle>Another Card</h3>
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Transactions</h3>
+            </div>
+            <div hlmCardContent class="space-y-2">
+                <div class="flex justify-between items-center pb-2 border-b border-border">
+                    <div>
+                        <p class="text-xs font-medium">Subscription</p>
+                        <p class="text-xs text-muted-foreground">Jan 20</p>
+                    </div>
+                    <span class="text-xs font-medium text-destructive">-$29.99</span>
                 </div>
-                <div hlmCardContent>
-                    <p>Simple card content without description or footer.</p>
+                <div class="flex justify-between items-center pb-2 border-b border-border">
+                    <div>
+                        <p class="text-xs font-medium">Refund</p>
+                        <p class="text-xs text-muted-foreground">Jan 18</p>
+                    </div>
+                    <span class="text-xs font-medium text-primary">+$15.00</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-xs font-medium">Purchase</p>
+                        <p class="text-xs text-muted-foreground">Jan 15</p>
+                    </div>
+                    <span class="text-xs font-medium text-destructive">-$99.00</span>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Inputs Section -->
-    <section class="space-y-4">
-        <h2 class="text-2xl font-bold">Inputs</h2>
-        <div class="max-w-sm space-y-4">
-            <input hlmInput placeholder="Default Input" [(ngModel)]="inputValue" />
-            <p class="text-sm text-muted-foreground">Value: {{ inputValue }}</p>
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Team</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <div
+                        class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-semibold">
+                        JD
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">John Doe</p>
+                        <p class="text-xs text-muted-foreground">Admin</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div
+                        class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-secondary-foreground text-xs font-semibold">
+                        AS
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">Alice Smith</p>
+                        <p class="text-xs text-muted-foreground">Developer</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <!-- Badges Section -->
-    <section class="space-y-4">
-        <h2 class="text-2xl font-bold">Badges</h2>
-        <div class="flex gap-4">
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Settings</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Notifications</span>
+                    <hlm-switch />
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Dark Mode</span>
+                    <hlm-switch />
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Auto Save</span>
+                    <hlm-switch [(checked)]="isSwitchOn" />
+                </div>
+                <hlm-separator />
+                <button hlmBtn variant="destructive" size="sm" class="w-full">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Badge Showcase (non-card) -->
+    <div class="p-6 bg-card rounded-lg border border-border" [style.border-radius]="'var(--radius)'"
+        [style.box-shadow]="'var(--shadow)'">
+        <h3 class="text-lg font-semibold mb-4">Badge Collection</h3>
+        <div class="flex flex-wrap gap-2">
             <span hlmBadge variant="default">Default</span>
             <span hlmBadge variant="secondary">Secondary</span>
-            <span hlmBadge variant="destructive">Destructive</span>
+            <span hlmBadge variant="destructive">Error</span>
             <span hlmBadge variant="outline">Outline</span>
+            <span hlmBadge variant="default">New</span>
+            <span hlmBadge variant="secondary">Beta</span>
+            <span hlmBadge variant="destructive">Critical</span>
+            <span hlmBadge variant="outline">Draft</span>
         </div>
-    </section>
+    </div>
 
-    <!-- Alerts Section -->
-    <section class="space-y-4">
-        <h2 class="text-2xl font-bold">Alerts</h2>
-        <div hlmAlert>
-            <ng-icon hlm name="lucideInfo" hlmAlertIcon></ng-icon>
-            <h4 hlmAlertTitle>Heads up!</h4>
-            <p hlmAlertDescription>
-                You can add components to your app using the cli.
-            </p>
-        </div>
-    </section>
-
-    <!-- Utility Gallery -->
-    <section class="space-y-4">
-        <h2 class="text-2xl font-bold">Utility Gallery</h2>
-
-        <h3 class="text-xl font-semibold">Colors</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div *ngFor="let bg of backgrounds" class="p-4 rounded-md border" [ngClass]="bg">
-                {{ bg }}
+    <!-- Skeleton Loaders (non-card) -->
+    <div class="p-6 bg-muted/10 rounded-lg border border-border" [style.border-radius]="'var(--radius)'">
+        <h3 class="text-lg font-semibold mb-4">Loading States</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+            <div class="space-y-3">
+                <hlm-skeleton class="h-12 w-12 rounded-full" />
+                <hlm-skeleton class="h-4 w-full" />
+                <hlm-skeleton class="h-4 w-3/4" />
+            </div>
+            <div class="space-y-3">
+                <hlm-skeleton class="h-24 w-full rounded-lg" />
+                <hlm-skeleton class="h-4 w-full" />
+            </div>
+            <div class="space-y-3">
+                <hlm-skeleton class="h-4 w-full" />
+                <hlm-skeleton class="h-4 w-full" />
+                <hlm-skeleton class="h-4 w-3/4" />
+            </div>
+            <div class="space-y-3">
+                <hlm-skeleton class="h-20 w-full rounded-lg" />
+                <hlm-skeleton class="h-4 w-2/3" />
             </div>
         </div>
-
-        <h3 class="text-xl font-semibold mt-6">Shapes</h3>
-        <div class="flex flex-wrap gap-4">
-            <div *ngFor="let shape of shapes"
-                class="w-24 h-24 bg-primary flex items-center justify-center text-primary-foreground text-xs"
-                [ngClass]="shape">
-                {{ shape }}
-            </div>
-        </div>
-    </section>
+    </div>
 
 </div>

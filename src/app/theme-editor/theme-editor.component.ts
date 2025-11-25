@@ -1,11 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { ThemeService, ThemeVariable } from '../theme.service';
 
 @Component({
@@ -13,12 +8,7 @@ import { ThemeService, ThemeVariable } from '../theme.service';
     standalone: true,
     imports: [
         CommonModule,
-        FormsModule,
-        MatTabsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule
+        FormsModule
     ],
     templateUrl: './theme-editor.component.html',
     styleUrls: ['./theme-editor.component.scss']
@@ -30,6 +20,7 @@ export class ThemeEditorComponent implements OnInit, OnChanges {
     groups: string[] = [];
     variables: ThemeVariable[] = [];
     selectedTabIndex: number = 0;
+    openAccordions: Set<string> = new Set();
 
     constructor(private themeService: ThemeService) { }
 
@@ -46,6 +37,30 @@ export class ThemeEditorComponent implements OnInit, OnChanges {
         }
     }
 
+    getSubgroups(group: string): string[] {
+        return this.themeService.getSubgroups(group);
+    }
+
+    getVariablesBySubgroup(group: string, subgroup: string): ThemeVariable[] {
+        return this.themeService.getVariablesBySubgroup(group, subgroup);
+    }
+
+    getVariablesWithoutSubgroup(group: string): ThemeVariable[] {
+        return this.themeService.getVariablesWithoutSubgroup(group);
+    }
+
+    toggleAccordion(subgroup: string) {
+        if (this.openAccordions.has(subgroup)) {
+            this.openAccordions.delete(subgroup);
+        } else {
+            this.openAccordions.add(subgroup);
+        }
+    }
+
+    isAccordionOpen(subgroup: string): boolean {
+        return this.openAccordions.has(subgroup);
+    }
+
     getVariablesByGroup(group: string) {
         return this.variables.filter(v => v.group === group);
     }
@@ -53,5 +68,9 @@ export class ThemeEditorComponent implements OnInit, OnChanges {
     updateValue(variable: ThemeVariable, event: Event) {
         const value = (event.target as HTMLInputElement).value;
         this.themeService.updateVariable(variable.name, value);
+    }
+
+    getHexValue(variableName: string): string {
+        return this.themeService.getHexValue(variableName);
     }
 }
