@@ -21,41 +21,41 @@ export interface ThemeVariable {
 export class ThemeService {
     private variables: ThemeVariable[] = [
         // Base Colors
-        { name: '--background', value: '1 0 0', label: 'Background', type: 'color', group: 'Colors', subgroup: 'Base', description: 'Page background' },
-        { name: '--foreground', value: '0.145 0 0', label: 'Foreground', type: 'color', group: 'Colors', subgroup: 'Base', description: 'Default text' },
+        { name: '--background', value: '0.98 0.01 85', label: 'Background', type: 'color', group: 'Colors', subgroup: 'Base', description: 'Page background' },
+        { name: '--foreground', value: '0.25 0.04 250', label: 'Foreground', type: 'color', group: 'Colors', subgroup: 'Base', description: 'Default text' },
 
-        // Primary
-        { name: '--primary', value: '0.205 0 0', label: 'Primary', type: 'color', group: 'Colors', subgroup: 'Primary', description: 'Main brand color' },
-        { name: '--primary-foreground', value: '0.985 0 0', label: 'Primary Foreground', type: 'color', group: 'Colors', subgroup: 'Primary', description: 'Text on primary' },
+        // Primary - Vibrant Blue
+        { name: '--primary', value: '0.55 0.25 250', label: 'Primary', type: 'color', group: 'Colors', subgroup: 'Primary', description: 'Main brand color' },
+        { name: '--primary-foreground', value: '0.99 0.01 250', label: 'Primary Foreground', type: 'color', group: 'Colors', subgroup: 'Primary', description: 'Text on primary' },
 
-        // Secondary
-        { name: '--secondary', value: '0.97 0 0', label: 'Secondary', type: 'color', group: 'Colors', subgroup: 'Secondary', description: 'Secondary brand color' },
-        { name: '--secondary-foreground', value: '0.205 0 0', label: 'Secondary Foreground', type: 'color', group: 'Colors', subgroup: 'Secondary', description: 'Text on secondary' },
+        // Secondary - Rich Purple
+        { name: '--secondary', value: '0.5 0.22 290', label: 'Secondary', type: 'color', group: 'Colors', subgroup: 'Secondary', description: 'Secondary brand color' },
+        { name: '--secondary-foreground', value: '0.99 0.01 290', label: 'Secondary Foreground', type: 'color', group: 'Colors', subgroup: 'Secondary', description: 'Text on secondary' },
 
-        // Destructive
-        { name: '--destructive', value: '0.577 0.245 27.325', label: 'Destructive', type: 'color', group: 'Colors', subgroup: 'Destructive', description: 'Error/danger color' },
-        { name: '--destructive-foreground', value: '0.985 0 0', label: 'Destructive Foreground', type: 'color', group: 'Colors', subgroup: 'Destructive', description: 'Text on destructive' },
+        // Destructive - Warm Orange
+        { name: '--destructive', value: '0.58 0.24 25', label: 'Destructive', type: 'color', group: 'Colors', subgroup: 'Destructive', description: 'Error/danger color' },
+        { name: '--destructive-foreground', value: '0.99 0.01 25', label: 'Destructive Foreground', type: 'color', group: 'Colors', subgroup: 'Destructive', description: 'Text on destructive' },
 
-        // Muted
-        { name: '--muted', value: '0.97 0 0', label: 'Muted', type: 'color', group: 'Colors', subgroup: 'Muted', description: 'Muted background' },
-        { name: '--muted-foreground', value: '0.556 0 0', label: 'Muted Foreground', type: 'color', group: 'Colors', subgroup: 'Muted', description: 'Muted text' },
+        // Muted - Soft gray-blue
+        { name: '--muted', value: '0.94 0.015 250', label: 'Muted', type: 'color', group: 'Colors', subgroup: 'Muted', description: 'Muted background' },
+        { name: '--muted-foreground', value: '0.5 0.03 250', label: 'Muted Foreground', type: 'color', group: 'Colors', subgroup: 'Muted', description: 'Muted text' },
 
-        // Accent
-        { name: '--accent', value: '0.97 0 0', label: 'Accent', type: 'color', group: 'Colors', subgroup: 'Accent', description: 'Accent background' },
-        { name: '--accent-foreground', value: '0.205 0 0', label: 'Accent Foreground', type: 'color', group: 'Colors', subgroup: 'Accent', description: 'Text on accent' },
+        // Accent - Vibrant Pink
+        { name: '--accent', value: '0.6 0.24 340', label: 'Accent', type: 'color', group: 'Colors', subgroup: 'Accent', description: 'Accent background' },
+        { name: '--accent-foreground', value: '0.99 0.01 340', label: 'Accent Foreground', type: 'color', group: 'Colors', subgroup: 'Accent', description: 'Text on accent' },
 
         // Card
-        { name: '--card', value: '1 0 0', label: 'Card', type: 'color', group: 'Colors', subgroup: 'Card', description: 'Card background' },
-        { name: '--card-foreground', value: '0.145 0 0', label: 'Card Foreground', type: 'color', group: 'Colors', subgroup: 'Card', description: 'Text on card' },
+        { name: '--card', value: '1 0.005 85', label: 'Card', type: 'color', group: 'Colors', subgroup: 'Card', description: 'Card background' },
+        { name: '--card-foreground', value: '0.25 0.04 250', label: 'Card Foreground', type: 'color', group: 'Colors', subgroup: 'Card', description: 'Text on card' },
 
         // Popover
-        { name: '--popover', value: '1 0 0', label: 'Popover', type: 'color', group: 'Colors', subgroup: 'Popover', description: 'Popover background' },
-        { name: '--popover-foreground', value: '0.145 0 0', label: 'Popover Foreground', type: 'color', group: 'Colors', subgroup: 'Popover', description: 'Text on popover' },
+        { name: '--popover', value: '1 0.005 85', label: 'Popover', type: 'color', group: 'Colors', subgroup: 'Popover', description: 'Popover background' },
+        { name: '--popover-foreground', value: '0.25 0.04 250', label: 'Popover Foreground', type: 'color', group: 'Colors', subgroup: 'Popover', description: 'Text on popover' },
 
         // Borders
-        { name: '--border', value: '0.915 0 0', label: 'Border', type: 'color', group: 'Colors', subgroup: 'Borders', description: 'Default border color' },
-        { name: '--input', value: '0.915 0 0', label: 'Input', type: 'color', group: 'Colors', subgroup: 'Borders', description: 'Input border color' },
-        { name: '--ring', value: '0.205 0 0', label: 'Ring', type: 'color', group: 'Colors', subgroup: 'Borders', description: 'Focus ring color' },
+        { name: '--border', value: '0.88 0.02 250', label: 'Border', type: 'color', group: 'Colors', subgroup: 'Borders', description: 'Default border color' },
+        { name: '--input', value: '0.88 0.02 250', label: 'Input', type: 'color', group: 'Colors', subgroup: 'Borders', description: 'Input border color' },
+        { name: '--ring', value: '0.55 0.25 250', label: 'Ring', type: 'color', group: 'Colors', subgroup: 'Borders', description: 'Focus ring color' },
 
         // Other - Design Tokens
         { name: '--radius', value: '0.5', label: 'Border Radius', type: 'radius', group: 'Other', subgroup: 'Design Tokens', description: 'Global border radius', unit: 'rem', min: 0, max: 2, step: 0.05 },

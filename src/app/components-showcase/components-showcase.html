@@ -412,6 +412,201 @@
     <div class="p-6 bg-muted/10 rounded-lg border border-border" [style.border-radius]="'var(--radius)'">
         <h3 class="text-lg font-semibold mb-4">Loading States</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Number & Date</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <input hlmInput type="number" placeholder="Age" class="text-sm" />
+                <input hlmInput type="date" class="text-sm" />
+                <input hlmInput type="time" class="text-sm" />
+                <input hlmInput type="tel" placeholder="Phone" class="text-sm" />
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Special Inputs</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <input hlmInput type="url" placeholder="Website" class="text-sm" />
+                <input hlmInput type="color" value="#3b82f6" class="text-sm" />
+                <input hlmInput type="range" class="text-sm" />
+                <input hlmInput type="file" class="text-sm" />
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Text Area</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <textarea hlmInput rows="3" placeholder="Description..." class="text-sm"></textarea>
+                <div class="flex items-center gap-2">
+                    <hlm-checkbox [(checked)]="isChecked" />
+                    <span class="text-xs">I agree</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Enable</span>
+                    <hlm-switch [(checked)]="isSwitchOn" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Separator with custom styling -->
+    <hlm-separator class="my-8" />
+
+    <!-- Button Showcase (non-card) -->
+    <div class="p-6 bg-muted/20 rounded-lg border border-border" [style.border-radius]="'var(--radius)'"
+        [style.box-shadow]="'var(--shadow)'">
+        <h3 class="text-lg font-semibold mb-4">Button Variants</h3>
+        <div class="flex flex-wrap gap-3">
+            <button hlmBtn variant="default">Default</button>
+            <button hlmBtn variant="secondary">Secondary</button>
+            <button hlmBtn variant="destructive">Destructive</button>
+            <button hlmBtn variant="outline">Outline</button>
+            <button hlmBtn variant="ghost">Ghost</button>
+            <button hlmBtn variant="link">Link</button>
+            <button hlmBtn size="sm">Small</button>
+            <button hlmBtn size="lg">Large</button>
+        </div>
+    </div>
+
+    <!-- Row 4: Chat, Table, Buttons, Badges -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Messages</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <div class="flex gap-2">
+                    <div
+                        class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-semibold">
+                        JD
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">John Doe</p>
+                        <p class="text-xs text-muted-foreground">Hey there!</p>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <div
+                        class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-secondary-foreground text-xs font-semibold">
+                        AS
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">Alice</p>
+                        <p class="text-xs text-muted-foreground">Review my PR?</p>
+                    </div>
+                </div>
+            </div>
+            <div hlmCardFooter class="pt-3">
+                <input hlmInput placeholder="Type..." class="text-sm" />
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Transactions</h3>
+            </div>
+            <div hlmCardContent class="space-y-2">
+                <div class="flex justify-between items-center pb-2 border-b border-border">
+                    <div>
+                        <p class="text-xs font-medium">Subscription</p>
+                        <p class="text-xs text-muted-foreground">Jan 20</p>
+                    </div>
+                    <span class="text-xs font-medium text-destructive">-$29.99</span>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-border">
+                    <div>
+                        <p class="text-xs font-medium">Refund</p>
+                        <p class="text-xs text-muted-foreground">Jan 18</p>
+                    </div>
+                    <span class="text-xs font-medium text-primary">+$15.00</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-xs font-medium">Purchase</p>
+                        <p class="text-xs text-muted-foreground">Jan 15</p>
+                    </div>
+                    <span class="text-xs font-medium text-destructive">-$99.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Team</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <div
+                        class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-semibold">
+                        JD
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">John Doe</p>
+                        <p class="text-xs text-muted-foreground">Admin</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div
+                        class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-secondary-foreground text-xs font-semibold">
+                        AS
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">Alice Smith</p>
+                        <p class="text-xs text-muted-foreground">Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Settings</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Notifications</span>
+                    <hlm-switch />
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Dark Mode</span>
+                    <hlm-switch />
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Auto Save</span>
+                    <hlm-switch [(checked)]="isSwitchOn" />
+                </div>
+                <hlm-separator />
+                <button hlmBtn variant="destructive" size="sm" class="w-full">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Badge Showcase (non-card) -->
+    <div class="p-6 bg-card rounded-lg border border-border" [style.border-radius]="'var(--radius)'"
+        [style.box-shadow]="'var(--shadow)'">
+        <h3 class="text-lg font-semibold mb-4">Badge Collection</h3>
+        <div class="flex flex-wrap gap-2">
+            <span hlmBadge variant="default">Default</span>
+            <span hlmBadge variant="secondary">Secondary</span>
+            <span hlmBadge variant="destructive">Error</span>
+            <span hlmBadge variant="outline">Outline</span>
+            <span hlmBadge variant="default">New</span>
+            <span hlmBadge variant="secondary">Beta</span>
+            <span hlmBadge variant="destructive">Critical</span>
+            <span hlmBadge variant="outline">Draft</span>
+        </div>
+    </div>
+
+    <!-- Skeleton Loaders (non-card) -->
+    <div class="p-6 bg-muted/10 rounded-lg border border-border" [style.border-radius]="'var(--radius)'">
+        <h3 class="text-lg font-semibold mb-4">Loading States</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
             <div class="space-y-3">
                 <hlm-skeleton class="h-12 w-12 rounded-full" />
                 <hlm-skeleton class="h-4 w-full" />
@@ -429,6 +624,181 @@
             <div class="space-y-3">
                 <hlm-skeleton class="h-20 w-full rounded-lg" />
                 <hlm-skeleton class="h-4 w-2/3" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Color Palette Demo -->
+    <div class="p-6 bg-card rounded-lg border border-border" [style.border-radius]="'var(--radius)'"
+        [style.box-shadow]="'var(--shadow)'">
+        <h3 class="text-lg font-semibold mb-4">Theme Color Palette</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+            <!-- Primary Color -->
+            <div class="space-y-3">
+                <div class="h-24 bg-primary rounded-lg flex items-center justify-center">
+                    <span class="text-primary-foreground font-semibold">Primary</span>
+                </div>
+                <button hlmBtn variant="default" class="w-full">Primary Button</button>
+                <div class="flex gap-2">
+                    <span hlmBadge variant="default">New</span>
+                    <span hlmBadge variant="default">Featured</span>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">
+                    AB
+                </div>
+            </div>
+
+            <!-- Secondary Color -->
+            <div class="space-y-3">
+                <div class="h-24 bg-secondary rounded-lg flex items-center justify-center">
+                    <span class="text-secondary-foreground font-semibold">Secondary</span>
+                </div>
+                <button hlmBtn variant="secondary" class="w-full">Secondary Button</button>
+                <div class="flex gap-2">
+                    <span hlmBadge variant="secondary">Beta</span>
+                    <span hlmBadge variant="secondary">Draft</span>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-secondary-foreground font-semibold">
+                    CD
+                </div>
+            </div>
+
+            <!-- Accent Color -->
+            <div class="space-y-3">
+                <div class="h-24 bg-accent rounded-lg flex items-center justify-center">
+                    <span class="text-accent-foreground font-semibold">Accent</span>
+                </div>
+                <button
+                    class="w-full px-4 py-2 bg-accent text-accent-foreground rounded-md hover:bg-accent/90 transition-colors font-medium">
+                    Accent Button
+                </button>
+                <div class="flex gap-2">
+                    <span class="px-2 py-1 bg-accent text-accent-foreground text-xs rounded-md font-medium">Hot</span>
+                    <span
+                        class="px-2 py-1 bg-accent text-accent-foreground text-xs rounded-md font-medium">Special</span>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-semibold">
+                    EF
+                </div>
+            </div>
+
+            <!-- Destructive Color -->
+            <div class="space-y-3">
+                <div class="h-24 bg-destructive rounded-lg flex items-center justify-center">
+                    <span class="text-destructive-foreground font-semibold">Destructive</span>
+                </div>
+                <button hlmBtn variant="destructive" class="w-full">Destructive Button</button>
+                <div class="flex gap-2">
+                    <span hlmBadge variant="destructive">Error</span>
+                    <span hlmBadge variant="destructive">Alert</span>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-destructive flex items-center justify-center text-destructive-foreground font-semibold">
+                    ⚠
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Colorful Components -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <!-- Notifications Card -->
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Recent Notifications</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <div class="flex items-start gap-2 p-2 rounded-md bg-primary/10 border border-primary/20">
+                    <div class="w-2 h-2 rounded-full bg-primary mt-1"></div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">New user registered</p>
+                        <p class="text-xs text-muted-foreground">5 minutes ago</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-2 p-2 rounded-md bg-secondary/10 border border-secondary/20">
+                    <div class="w-2 h-2 rounded-full bg-secondary mt-1"></div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">Report generated</p>
+                        <p class="text-xs text-muted-foreground">15 minutes ago</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-2 p-2 rounded-md bg-accent/10 border border-accent/20">
+                    <div class="w-2 h-2 rounded-full bg-accent mt-1"></div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">Special offer available</p>
+                        <p class="text-xs text-muted-foreground">1 hour ago</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-2 p-2 rounded-md bg-destructive/10 border border-destructive/20">
+                    <div class="w-2 h-2 rounded-full bg-destructive mt-1"></div>
+                    <div class="flex-1">
+                        <p class="text-xs font-medium">Payment failed</p>
+                        <p class="text-xs text-muted-foreground">2 hours ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Indicators -->
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Service Status</h3>
+            </div>
+            <div hlmCardContent class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">API Gateway</span>
+                    <span
+                        class="px-2 py-1 bg-primary text-primary-foreground text-xs rounded-md font-medium">Online</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Database</span>
+                    <span
+                        class="px-2 py-1 bg-primary text-primary-foreground text-xs rounded-md font-medium">Healthy</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Cache Server</span>
+                    <span
+                        class="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-md font-medium">Syncing</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">CDN</span>
+                    <span
+                        class="px-2 py-1 bg-accent text-accent-foreground text-xs rounded-md font-medium">Optimized</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs">Email Service</span>
+                    <span
+                        class="px-2 py-1 bg-destructive text-destructive-foreground text-xs rounded-md font-medium">Down</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div hlmCard [style.box-shadow]="'var(--shadow)'">
+            <div hlmCardHeader>
+                <h3 hlmCardTitle class="text-sm">Quick Actions</h3>
+            </div>
+            <div hlmCardContent class="space-y-2">
+                <button
+                    class="w-full px-3 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm font-medium text-left">
+                    📊 View Analytics
+                </button>
+                <button
+                    class="w-full px-3 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/90 transition-colors text-sm font-medium text-left">
+                    📝 Create Draft
+                </button>
+                <button
+                    class="w-full px-3 py-2 bg-accent text-accent-foreground rounded-md hover:bg-accent/90 transition-colors text-sm font-medium text-left">
+                    ⭐ Featured Content
+                </button>
+                <button
+                    class="w-full px-3 py-2 bg-destructive text-destructive-foreground rounded-md hover:bg-destructive/90 transition-colors text-sm font-medium text-left">
+                    🗑️ Delete Items
+                </button>
             </div>
         </div>
     </div>
