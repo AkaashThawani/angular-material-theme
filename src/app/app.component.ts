@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeEditorComponent } from './theme-editor/theme-editor.component';
 import { ComponentsShowcaseComponent } from './components-showcase/components-showcase';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HlmCardImports } from '@spartan-ng/helm/card';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmInputImports } from '@spartan-ng/helm/input';
@@ -36,6 +37,7 @@ import {
         CommonModule,
         ThemeEditorComponent,
         ComponentsShowcaseComponent,
+        LandingPageComponent,
         ...HlmCardImports,
         ...HlmButtonImports,
         ...HlmInputImports,
@@ -74,7 +76,7 @@ export class AppComponent {
     isResizing = false;
 
     // Active tab
-    activeTab: 'showcase' | 'dashboard' | 'pricing' | 'mail' = 'showcase';
+    activeTab: 'landing' | 'showcase' | 'dashboard' | 'pricing' | 'mail' = 'landing';
 
     startResize(event: MouseEvent) {
         this.isResizing = true;

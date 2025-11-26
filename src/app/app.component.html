@@ -1,5 +1,9 @@
-<div class="flex h-screen w-full bg-background text-foreground overflow-hidden" (window:mousemove)="onMouseMove($event)"
-    (window:mouseup)="stopResize()">
+<!-- Landing Page (Full Screen) -->
+<app-landing-page *ngIf="activeTab === 'landing'" (navigate)="activeTab = $any($event)"></app-landing-page>
+
+<!-- Main App Layout (Sidebar + Content) -->
+<div *ngIf="activeTab !== 'landing'" class="flex h-screen w-full bg-background text-foreground overflow-hidden"
+    (window:mousemove)="onMouseMove($event)" (window:mouseup)="stopResize()">
 
     <!-- Sidebar: Theme Editor -->
     <aside class="border-r border-border bg-card overflow-y-auto flex-shrink-0 relative"
@@ -24,6 +28,13 @@
 
                 <!-- Tabs -->
                 <div class="flex gap-6">
+                    <button (click)="activeTab = 'landing'"
+                        class="pb-3 text-sm font-medium border-b-2 transition-colors hover:text-primary"
+                        [class.border-primary]="activeTab === 'landing'" [class.text-primary]="activeTab === 'landing'"
+                        [class.border-transparent]="activeTab !== 'landing'"
+                        [class.text-muted-foreground]="activeTab !== 'landing'">
+                        Landing
+                    </button>
                     <button (click)="activeTab = 'showcase'"
                         class="pb-3 text-sm font-medium border-b-2 transition-colors hover:text-primary"
                         [class.border-primary]="activeTab === 'showcase'"
@@ -83,7 +94,8 @@
                         <div hlmCard class="flex flex-col" [style.box-shadow]="'var(--shadow)'">
                             <div hlmCardHeader>
                                 <h3 class="text-xl font-semibold">Basic</h3>
-                                <p class="text-sm text-muted-foreground mt-1">Essential features for individuals.</p>
+                                <p class="text-sm text-muted-foreground mt-1">Essential features for
+                                    individuals.</p>
                             </div>
                             <div hlmCardContent class="flex-1">
                                 <div class="mb-6">
@@ -158,7 +170,8 @@
                         <div hlmCard class="flex flex-col" [style.box-shadow]="'var(--shadow)'">
                             <div hlmCardHeader>
                                 <h3 class="text-xl font-semibold text-accent">Enterprise</h3>
-                                <p class="text-sm text-muted-foreground mt-1">For large scale organizations.</p>
+                                <p class="text-sm text-muted-foreground mt-1">For large scale organizations.
+                                </p>
                             </div>
                             <div hlmCardContent class="flex-1">
                                 <div class="mb-6">
@@ -336,7 +349,8 @@
                                         AS</div>
                                     <div>
                                         <h2 class="text-xl font-semibold">Project Update: Q4 Goals</h2>
-                                        <p class="text-sm text-muted-foreground">Alice Smith &lt;alice@example.com&gt;
+                                        <p class="text-sm text-muted-foreground">Alice Smith
+                                            &lt;alice@example.com&gt;
                                         </p>
                                     </div>
                                 </div>
@@ -345,7 +359,8 @@
 
                             <div class="prose prose-sm max-w-none text-foreground">
                                 <p>Hi team,</p>
-                                <p>Here are the latest updates on our Q4 goals. We are making great progress on the new
+                                <p>Here are the latest updates on our Q4 goals. We are making great progress
+                                    on the new
                                     feature rollout.</p>
                                 <p class="mt-4">Best regards,<br>Alice</p>
                             </div>
