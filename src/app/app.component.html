@@ -1,18 +1,86 @@
-<div class="flex h-screen w-full bg-background text-foreground overflow-hidden">
+<div class="flex h-screen w-full bg-background text-foreground overflow-hidden" (window:mousemove)="onMouseMove($event)"
+    (window:mouseup)="stopResize()">
+
     <!-- Sidebar: Theme Editor -->
-    <aside class="border-r border-border bg-card overflow-y-auto">
+    <aside class="border-r border-border bg-card overflow-y-auto flex-shrink-0 relative"
+        [style.width.px]="sidebarWidth">
         <app-theme-editor [activeSection]="0"></app-theme-editor>
+
+        <!-- Resize Handle -->
+        <div class="absolute top-0 right-0 w-1 h-full cursor-col-resize hover:bg-primary/50 transition-colors z-50"
+            (mousedown)="startResize($event)">
+        </div>
     </aside>
 
-    <!-- Main Content: Components Showcase -->
-    <main class="flex-1 overflow-y-auto bg-background p-8">
-        <div class="max-w-8xl mx-auto space-y-8">
-            <div class="space-y-2">
-                <h1 class="text-3xl font-bold tracking-tight">Components Showcase</h1>
-                <p class="text-muted-foreground">Real-time Preview of Spartan UI Components</p>
-            </div>
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col overflow-hidden bg-background">
+        <!-- Header with Tabs -->
+        <div class="border-b border-border bg-card px-8 pt-8 pb-0 flex-shrink-0">
+            <div class="max-w-8xl mx-auto space-y-6">
+                <div class="space-y-2">
+                    <h1 class="text-3xl font-bold tracking-tight">Components Showcase</h1>
+                    <p class="text-muted-foreground">Real-time Preview of Spartan UI Components</p>
+                </div>
 
-            <app-components-showcase></app-components-showcase>
+                <!-- Tabs -->
+                <div class="flex gap-6">
+                    <button (click)="activeTab = 'showcase'"
+                        class="pb-3 text-sm font-medium border-b-2 transition-colors hover:text-primary"
+                        [class.border-primary]="activeTab === 'showcase'"
+                        [class.text-primary]="activeTab === 'showcase'"
+                        [class.border-transparent]="activeTab !== 'showcase'"
+                        [class.text-muted-foreground]="activeTab !== 'showcase'">
+                        Showcase
+                    </button>
+                    <button (click)="activeTab = 'dashboard'"
+                        class="pb-3 text-sm font-medium border-b-2 transition-colors hover:text-primary"
+                        [class.border-primary]="activeTab === 'dashboard'"
+                        [class.text-primary]="activeTab === 'dashboard'"
+                        [class.border-transparent]="activeTab !== 'dashboard'"
+                        [class.text-muted-foreground]="activeTab !== 'dashboard'">
+                        Dashboard
+                    </button>
+                    <button (click)="activeTab = 'pricing'"
+                        class="pb-3 text-sm font-medium border-b-2 transition-colors hover:text-primary"
+                        [class.border-primary]="activeTab === 'pricing'" [class.text-primary]="activeTab === 'pricing'"
+                        [class.border-transparent]="activeTab !== 'pricing'"
+                        [class.text-muted-foreground]="activeTab !== 'pricing'">
+                        Pricing
+                    </button>
+                    <button (click)="activeTab = 'mail'"
+                        class="pb-3 text-sm font-medium border-b-2 transition-colors hover:text-primary"
+                        [class.border-primary]="activeTab === 'mail'" [class.text-primary]="activeTab === 'mail'"
+                        [class.border-transparent]="activeTab !== 'mail'"
+                        [class.text-muted-foreground]="activeTab !== 'mail'">
+                        Mail
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scrollable Content Area -->
+        <div class="flex-1 overflow-y-auto p-8">
+            <div class="max-w-8xl mx-auto">
+                <!-- Showcase Tab -->
+                <div *ngIf="activeTab === 'showcase'">
+                    <app-components-showcase></app-components-showcase>
+                </div>
+
+                <!-- Dashboard Tab -->
+                <div *ngIf="activeTab === 'dashboard'" class="space-y-6">
+                    <p class="text-muted-foreground">Dashboard template - Coming soon</p>
+                </div>
+
+                <!-- Pricing Tab -->
+                <div *ngIf="activeTab === 'pricing'" class="space-y-6">
+                    <p class="text-muted-foreground">Pricing template - Coming soon</p>
+                </div>
+
+                <!-- Mail Tab -->
+                <div *ngIf="activeTab === 'mail'" class="space-y-6">
+                    <p class="text-muted-foreground">Mail template - Coming soon</p>
+                </div>
+            </div>
         </div>
     </main>
 </div>
