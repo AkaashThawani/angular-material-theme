@@ -39,7 +39,7 @@ import { ThemeService } from '../theme.service';
     templateUrl: './landing-page.component.html',
 })
 export class LandingPageComponent {
-    @Output() navigate = new EventEmitter<string>();
+    @Output() navigate = new EventEmitter<'showcase' | 'dashboard' | 'pricing' | 'mail'>();
 
     constructor(private themeService: ThemeService) { }
 

@@ -76,7 +76,7 @@ export class AppComponent {
     isResizing = false;
 
     // Active tab
-    activeTab: 'landing' | 'showcase' | 'dashboard' | 'pricing' | 'mail' = 'landing';
+    activeTab: 'showcase' | 'dashboard' | 'pricing' | 'mail' | 'landing' = 'landing';
 
     startResize(event: MouseEvent) {
         this.isResizing = true;

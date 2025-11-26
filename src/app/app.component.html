@@ -1,7 +1,4 @@
-<!-- Landing Page (Full Screen) -->
-<app-landing-page *ngIf="activeTab === 'landing'" (navigate)="activeTab = $any($event)"></app-landing-page>
-
-<!-- Main App Layout (Sidebar + Content) -->
+<app-landing-page *ngIf="activeTab === 'landing'" (navigate)="activeTab = $event"></app-landing-page>
 <div *ngIf="activeTab !== 'landing'" class="flex h-screen w-full bg-background text-foreground overflow-hidden"
     (window:mousemove)="onMouseMove($event)" (window:mouseup)="stopResize()">
 
@@ -28,13 +25,13 @@
 
                 <!-- Tabs -->
                 <div class="flex gap-6">
-                    <button (click)="activeTab = 'landing'"
+                    <!-- <button (click)="activeTab = 'landing'"
                         class="pb-3 text-sm font-medium border-b-2 transition-colors hover:text-primary"
                         [class.border-primary]="activeTab === 'landing'" [class.text-primary]="activeTab === 'landing'"
                         [class.border-transparent]="activeTab !== 'landing'"
                         [class.text-muted-foreground]="activeTab !== 'landing'">
                         Landing
-                    </button>
+                    </button> -->
                     <button (click)="activeTab = 'showcase'"
                         class="pb-3 text-sm font-medium border-b-2 transition-colors hover:text-primary"
                         [class.border-primary]="activeTab === 'showcase'"
