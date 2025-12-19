@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
@@ -15,6 +16,7 @@ import {
     lucideCheck
 } from '@ng-icons/lucide';
 import { ThemeService } from '../theme.service';
+import { DashboardComponent } from '../dashboard/dashboard';
 
 @Component({
     selector: 'app-landing-page',
@@ -23,7 +25,8 @@ import { ThemeService } from '../theme.service';
         CommonModule,
         HlmButtonImports,
         HlmCardImports,
-        NgIconComponent
+        NgIconComponent,
+        DashboardComponent
     ],
     viewProviders: [provideIcons({
         lucideGithub,
@@ -39,11 +42,13 @@ import { ThemeService } from '../theme.service';
     templateUrl: './landing-page.component.html',
 })
 export class LandingPageComponent {
-    @Output() navigate = new EventEmitter<'showcase' | 'dashboard' | 'pricing' | 'mail'>();
+    constructor(private themeService: ThemeService, private router: Router) { }
 
     activeDemoTab: 'dashboard' | 'analytics' | 'settings' | 'user' = 'dashboard';
 
-    constructor(private themeService: ThemeService) { }
+    navigateTo(path: string) {
+        this.router.navigate([path]);
+    }
 
     presets = [
         {
@@ -153,11 +158,10 @@ export class LandingPageComponent {
         });
     }
 
-    scrollToShowcase() {
-        // This will be handled by the parent component switching tabs, 
-        // but for now we can just emit an event or let the user click the tab.
-        // In a real app with routing, we'd navigate.
-        // For this demo, we'll just log it or maybe we can inject AppComponent to switch tab?
-        // Better to keep it simple for now.
+    scrollTo(id: string) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
 }

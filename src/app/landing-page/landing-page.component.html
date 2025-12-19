@@ -14,12 +14,8 @@
             </div>
 
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-                <button (click)="navigate.emit('showcase')"
-                    class="hover:text-primary transition-colors">Features</button>
-                <button (click)="navigate.emit('showcase')"
-                    class="hover:text-primary transition-colors">Components</button>
-                <button (click)="navigate.emit('showcase')"
-                    class="hover:text-primary transition-colors">Theming</button>
+                <button (click)="scrollTo('features')" class="hover:text-primary transition-colors">Features</button>
+                <button (click)="scrollTo('live-demo')" class="hover:text-primary transition-colors">Themes</button>
             </nav>
 
             <div class="flex items-center gap-4">
@@ -27,7 +23,7 @@
                     class="text-muted-foreground hover:text-foreground transition-colors">
                     <ng-icon name="lucideGithub" class="h-5 w-5"></ng-icon>
                 </a>
-                <button hlmBtn variant="default" size="sm" (click)="navigate.emit('showcase')"
+                <button hlmBtn variant="default" size="sm" (click)="navigateTo('showcase')"
                     class="shadow-md hover:shadow-lg transition-all">
                     Get Started
                 </button>
@@ -73,21 +69,68 @@
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <button hlmBtn size="lg"
                         class="w-full sm:w-auto gap-2 text-lg h-14 px-10 shadow-lg hover:shadow-primary/25 transition-all hover:-translate-y-0.5"
-                        (click)="navigate.emit('showcase')">
+                        (click)="navigateTo('showcase')">
                         Get Started
                         <ng-icon name="lucideArrowRight" class="h-5 w-5"></ng-icon>
                     </button>
                     <button hlmBtn variant="outline" size="lg"
                         class="w-full sm:w-auto text-lg h-14 px-10 bg-background hover:bg-muted transition-all"
-                        (click)="navigate.emit('showcase')">
+                        (click)="scrollTo('live-demo')">
                         View Components
                     </button>
                 </div>
             </div>
         </section>
 
+        <!-- Features Section -->
+        <section id="features"
+            class="min-h-screen flex flex-col justify-center py-24 bg-background border-t border-border">
+            <div class="container px-4 md:px-8 max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Built for Modern Angular</h2>
+                    <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                        Everything you need to create stunning, accessible applications.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all">
+                        <div
+                            class="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
+                            <ng-icon name="lucideLayers" class="h-6 w-6"></ng-icon>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Modular Architecture</h3>
+                        <p class="text-muted-foreground">
+                            Components are built as separate libraries, allowing you to include only what you need.
+                        </p>
+                    </div>
+                    <div class="p-6 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all">
+                        <div
+                            class="h-12 w-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mb-4">
+                            <ng-icon name="lucidePalette" class="h-6 w-6"></ng-icon>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Theming Engine</h3>
+                        <p class="text-muted-foreground">
+                            Powerful CSS variable-based theming system that supports unlimited color combinations.
+                        </p>
+                    </div>
+                    <div class="p-6 rounded-xl border border-border bg-card shadow-sm hover:shadow-md transition-all">
+                        <div
+                            class="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center text-accent mb-4">
+                            <ng-icon name="lucideZap" class="h-6 w-6"></ng-icon>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Performance First</h3>
+                        <p class="text-muted-foreground">
+                            Optimized for OnPush change detection and zero runtime overhead styles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Live Demo Section -->
-        <section class="py-24 bg-muted/30 border-y border-border">
+        <section id="live-demo"
+            class="min-h-screen flex flex-col justify-center py-24 bg-muted/30 border-y border-border">
             <div class="container px-4 md:px-8 max-w-7xl mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Experience it live.</h2>
@@ -173,124 +216,8 @@
                         <div class="flex-1 overflow-auto bg-background/30" [ngSwitch]="activeDemoTab">
 
                             <!-- Dashboard View -->
-                            <div *ngSwitchCase="'dashboard'" class="p-8 space-y-8">
-                                <div class="flex items-center justify-between">
-                                    <h3 class="text-2xl font-bold">Dashboard</h3>
-                                    <button
-                                        class="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium shadow-sm hover:opacity-90">Download
-                                        Report</button>
-                                </div>
-
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                    <div
-                                        class="p-6 rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-                                        <p class="text-sm font-medium text-muted-foreground">Total Revenue</p>
-                                        <div class="mt-2 flex items-baseline gap-2">
-                                            <span class="text-3xl font-bold">$45,231</span>
-                                            <span class="text-sm text-green-500">+20.1%</span>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="p-6 rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-                                        <p class="text-sm font-medium text-muted-foreground">Active Users</p>
-                                        <div class="mt-2 flex items-baseline gap-2">
-                                            <span class="text-3xl font-bold">+2350</span>
-                                            <span class="text-sm text-green-500">+180.1%</span>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="p-6 rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-                                        <p class="text-sm font-medium text-muted-foreground">Sales</p>
-                                        <div class="mt-2 flex items-baseline gap-2">
-                                            <span class="text-3xl font-bold">+12,234</span>
-                                            <span class="text-sm text-green-500">+19%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                                    <div
-                                        class="p-6 rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-                                        <h4 class="font-semibold mb-4">Overview</h4>
-                                        <div class="h-[200px] flex items-end gap-2">
-                                            <div
-                                                class="w-full bg-primary/10 rounded-t-md h-[40%] hover:bg-primary/20 transition-colors relative group">
-                                                <div
-                                                    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-popover text-popover-foreground text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity shadow-sm border border-border">
-                                                    Jan</div>
-                                            </div>
-                                            <div
-                                                class="w-full bg-primary/30 rounded-t-md h-[70%] hover:bg-primary/40 transition-colors relative group">
-                                                <div
-                                                    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-popover text-popover-foreground text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity shadow-sm border border-border">
-                                                    Feb</div>
-                                            </div>
-                                            <div
-                                                class="w-full bg-primary/20 rounded-t-md h-[50%] hover:bg-primary/30 transition-colors relative group">
-                                                <div
-                                                    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-popover text-popover-foreground text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity shadow-sm border border-border">
-                                                    Mar</div>
-                                            </div>
-                                            <div
-                                                class="w-full bg-primary rounded-t-md h-[90%] hover:bg-primary/90 transition-colors relative group">
-                                                <div
-                                                    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-popover text-popover-foreground text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity shadow-sm border border-border">
-                                                    Apr</div>
-                                            </div>
-                                            <div
-                                                class="w-full bg-primary/40 rounded-t-md h-[60%] hover:bg-primary/50 transition-colors relative group">
-                                                <div
-                                                    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-popover text-popover-foreground text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity shadow-sm border border-border">
-                                                    May</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="p-6 rounded-xl border border-border bg-card text-card-foreground shadow-sm">
-                                        <h4 class="font-semibold mb-4">Recent Sales</h4>
-                                        <div class="space-y-4">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center gap-3">
-                                                    <div
-                                                        class="h-9 w-9 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold">
-                                                        OM</div>
-                                                    <div>
-                                                        <p class="text-sm font-medium">Olivia Martin</p>
-                                                        <p class="text-xs text-muted-foreground">olivia.martin@email.com
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="font-medium">+$1,999.00</div>
-                                            </div>
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center gap-3">
-                                                    <div
-                                                        class="h-9 w-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
-                                                        JL</div>
-                                                    <div>
-                                                        <p class="text-sm font-medium">Jackson Lee</p>
-                                                        <p class="text-xs text-muted-foreground">jackson.lee@email.com
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="font-medium">+$39.00</div>
-                                            </div>
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center gap-3">
-                                                    <div
-                                                        class="h-9 w-9 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">
-                                                        IN</div>
-                                                    <div>
-                                                        <p class="text-sm font-medium">Isabella Nguyen</p>
-                                                        <p class="text-xs text-muted-foreground">
-                                                            isabella.nguyen@email.com</p>
-                                                    </div>
-                                                </div>
-                                                <div class="font-medium">+$299.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div *ngSwitchCase="'dashboard'">
+                                <app-dashboard></app-dashboard>
                             </div>
 
                             <!-- Analytics View -->
@@ -493,9 +420,9 @@
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <button hlmBtn size="lg"
                         class="w-full sm:w-auto px-10 h-14 text-lg shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1"
-                        (click)="navigate.emit('showcase')">Start Building</button>
-                    <button hlmBtn variant="outline" size="lg" class="w-full sm:w-auto px-10 h-14 text-lg bg-background"
-                        (click)="navigate.emit('showcase')">Read Documentation</button>
+                        (click)="navigateTo('showcase')">Start Now</button>
+                    <!-- <button hlmBtn variant="outline" size="lg" class="w-full sm:w-auto px-10 h-14 text-lg bg-background"
+                        (click)="navigateTo('showcase')">Read Documentation</button> -->
                 </div>
             </div>
         </section>

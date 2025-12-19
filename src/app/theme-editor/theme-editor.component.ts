@@ -15,6 +15,7 @@ import { ThemeService, ThemeVariable } from '../theme.service';
 })
 export class ThemeEditorComponent implements OnInit, OnChanges {
     @Input() activeSection: number = 0;
+    @Input() showHeader: boolean = true;
     @Output() tabChange = new EventEmitter<number>();
 
     groups: string[] = [];

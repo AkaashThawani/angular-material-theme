@@ -1,0 +1,54 @@
+<div class="flex flex-col h-screen w-full bg-background text-foreground overflow-hidden"
+    (window:mousemove)="onMouseMove($event)" (window:mouseup)="stopResize()">
+
+    <!-- Unified Top Header -->
+    <header class="h-16 border-b border-border bg-card px-6 flex items-center justify-between shrink-0 z-10">
+        <div class="flex items-center gap-4">
+            <h1 class="text-xl font-bold tracking-tight">Theme Editor</h1>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="flex gap-1">
+            <a routerLink="showcase" routerLinkActive="bg-primary/10 text-primary"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="px-4 py-2 text-sm font-medium rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+                Showcase
+            </a>
+            <a routerLink="dashboard" routerLinkActive="bg-primary/10 text-primary"
+                class="px-4 py-2 text-sm font-medium rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+                Dashboard
+            </a>
+            <a routerLink="pricing" routerLinkActive="bg-primary/10 text-primary"
+                class="px-4 py-2 text-sm font-medium rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+                Pricing
+            </a>
+            <a routerLink="mail" routerLinkActive="bg-primary/10 text-primary"
+                class="px-4 py-2 text-sm font-medium rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+                Mail
+            </a>
+        </nav>
+    </header>
+
+    <!-- Split Layout Content -->
+    <div class="flex-1 flex overflow-hidden relative">
+        <!-- Sidebar: Theme Editor (Resizable) -->
+        <aside class="bg-card overflow-y-auto flex-shrink-0 relative border-r border-border"
+            [style.width.px]="sidebarWidth">
+            <app-theme-editor [showHeader]="false" [activeSection]="0"></app-theme-editor>
+
+            <!-- Resize Handle -->
+            <div class="absolute top-0 right-0 w-1 h-full cursor-col-resize hover:bg-primary/50 transition-colors z-50"
+                (mousedown)="startResize($event)">
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 flex flex-col overflow-hidden bg-background relative">
+            <div class="flex-1 overflow-y-auto p-8">
+                <div class="max-w-7xl mx-auto h-full">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

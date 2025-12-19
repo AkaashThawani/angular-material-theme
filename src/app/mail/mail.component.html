@@ -1,0 +1,200 @@
+<div class="h-[700px] rounded-xl border border-border bg-card overflow-hidden shadow-sm flex relative"
+    [style.box-shadow]="'var(--shadow)'">
+
+    <!-- Compose Overlay -->
+    <div *ngIf="isComposing"
+        class="absolute inset-0 z-50 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4"
+        (click)="toggleCompose()">
+        <div class="bg-card border border-border rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[600px]"
+            (click)="$event.stopPropagation()">
+            <div class="p-4 border-b border-border flex items-center justify-between bg-muted/30">
+                <h3 class="font-semibold">New Message</h3>
+                <button hlmBtn variant="ghost" size="icon" class="h-8 w-8" (click)="toggleCompose()">
+                    <ng-icon name="lucideTrash2" class="h-4 w-4"></ng-icon>
+                </button>
+            </div>
+            <div class="p-4 space-y-4 flex-1 overflow-y-auto">
+                <input hlmInput placeholder="To"
+                    class="w-full bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0" />
+                <input hlmInput placeholder="Subject"
+                    class="w-full bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 font-medium" />
+                <textarea class="w-full h-64 bg-transparent border-0 resize-none focus:outline-none p-0"
+                    placeholder="Write your message..."></textarea>
+            </div>
+            <div class="p-4 border-t border-border flex justify-end gap-2 bg-muted/10">
+                <button hlmBtn variant="ghost" (click)="toggleCompose()">Discard</button>
+                <button hlmBtn variant="default" (click)="toggleCompose()">Send Message</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="w-64 border-r border-border bg-muted/5 p-4 flex flex-col gap-4">
+        <button hlmBtn variant="default" class="w-full justify-start gap-2 shadow-sm" (click)="toggleCompose()">
+            <ng-icon name="lucidePenSquare" class="h-4 w-4"></ng-icon>
+            Compose
+        </button>
+
+        <div class="space-y-1">
+            <button hlmBtn variant="ghost"
+                class="w-full justify-start gap-2 bg-accent text-accent-foreground font-medium">
+                <ng-icon name="lucideInbox" class="h-4 w-4"></ng-icon>
+                Inbox
+                <span class="ml-auto text-xs font-bold">128</span>
+            </button>
+            <button hlmBtn variant="ghost"
+                class="w-full justify-start gap-2 text-muted-foreground hover:text-foreground">
+                <ng-icon name="lucideFile" class="h-4 w-4"></ng-icon>
+                Drafts
+                <span class="ml-auto text-xs">9</span>
+            </button>
+            <button hlmBtn variant="ghost"
+                class="w-full justify-start gap-2 text-muted-foreground hover:text-foreground">
+                <ng-icon name="lucideSend" class="h-4 w-4"></ng-icon>
+                Sent
+            </button>
+            <button hlmBtn variant="ghost"
+                class="w-full justify-start gap-2 text-muted-foreground hover:text-foreground">
+                <ng-icon name="lucideTrash2" class="h-4 w-4"></ng-icon>
+                Trash
+            </button>
+        </div>
+
+        <div class="mt-auto">
+            <h4 class="text-xs font-semibold text-muted-foreground mb-2 px-2 tracking-wider">LABELS</h4>
+            <div class="space-y-1">
+                <button hlmBtn variant="ghost" size="sm"
+                    class="w-full justify-start gap-2 text-muted-foreground hover:text-foreground">
+                    <div class="h-2 w-2 rounded-full bg-primary"></div>
+                    Personal
+                </button>
+                <button hlmBtn variant="ghost" size="sm"
+                    class="w-full justify-start gap-2 text-muted-foreground hover:text-foreground">
+                    <div class="h-2 w-2 rounded-full bg-secondary"></div>
+                    Work
+                </button>
+                <button hlmBtn variant="ghost" size="sm"
+                    class="w-full justify-start gap-2 text-muted-foreground hover:text-foreground">
+                    <div class="h-2 w-2 rounded-full bg-accent"></div>
+                    Important
+                </button>
+                <button hlmBtn variant="ghost" size="sm"
+                    class="w-full justify-start gap-2 text-muted-foreground hover:text-foreground">
+                    <div class="h-2 w-2 rounded-full bg-destructive"></div>
+                    Urgent
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message List -->
+    <div class="w-80 border-r border-border flex flex-col bg-background">
+        <div
+            class="p-4 border-b border-border flex items-center justify-between sticky top-0 bg-background/95 backdrop-blur z-10">
+            <h3 class="font-semibold text-lg">Inbox</h3>
+            <div class="flex gap-1">
+                <button hlmBtn variant="ghost" size="icon" class="h-8 w-8 text-muted-foreground hover:text-foreground">
+                    <ng-icon name="lucideSearch" class="h-4 w-4"></ng-icon>
+                </button>
+            </div>
+        </div>
+        <div class="flex-1 overflow-y-auto divide-y divide-border">
+            <div *ngFor="let mail of mails" (click)="selectMail(mail.id)"
+                class="p-4 cursor-pointer transition-all hover:bg-muted/50 group relative"
+                [class.bg-accent-50]="selectedMailId === mail.id" [class.bg-accent]="selectedMailId === mail.id">
+
+                <!-- Active Indicator -->
+                <div *ngIf="selectedMailId === mail.id" class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+
+                <div class="flex justify-between items-start mb-1">
+                    <span class="text-sm" [class.font-bold]="!mail.read" [class.font-medium]="mail.read">{{ mail.sender
+                        }}</span>
+                    <span class="text-xs text-muted-foreground group-hover:text-foreground transition-colors">{{
+                        mail.date }}</span>
+                </div>
+                <h4 class="text-sm mb-1" [class.font-bold]="!mail.read" [class.text-foreground]="!mail.read"
+                    [class.text-muted-foreground]="mail.read">{{ mail.subject }}</h4>
+                <p class="text-xs text-muted-foreground line-clamp-2 mb-2 group-hover:text-muted-foreground/80">
+                    {{ mail.preview }}
+                </p>
+                <div class="flex gap-2">
+                    <span *ngFor="let label of mail.labels" class="text-[10px] px-1.5 py-0.5 rounded font-medium"
+                        [ngClass]="{
+                              'bg-secondary/10 text-secondary': label === 'Work',
+                              'bg-accent/10 text-accent': label === 'Important' || label === 'Urgent',
+                              'bg-primary/10 text-primary': label === 'Support',
+                              'bg-muted text-muted-foreground': label === 'Newsletter'
+                          }">
+                        {{ label }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reading Pane -->
+    <div class="flex-1 flex flex-col bg-background/50" *ngIf="selectedMail; else noSelection">
+        <div class="p-4 border-b border-border flex items-center justify-between bg-background/50 backdrop-blur-sm">
+            <div class="flex gap-2">
+                <button hlmBtn variant="ghost" size="icon" class="h-8 w-8 text-muted-foreground hover:text-foreground">
+                    <ng-icon name="lucideArchive" class="h-4 w-4"></ng-icon>
+                </button>
+                <button hlmBtn variant="ghost" size="icon" class="h-8 w-8 text-muted-foreground hover:text-foreground">
+                    <ng-icon name="lucideTrash2" class="h-4 w-4"></ng-icon>
+                </button>
+                <button hlmBtn variant="ghost" size="icon" class="h-8 w-8 text-muted-foreground hover:text-foreground">
+                    <ng-icon name="lucideClock" class="h-4 w-4"></ng-icon>
+                </button>
+            </div>
+            <div class="flex gap-2">
+                <button hlmBtn variant="ghost" size="icon" class="h-8 w-8 text-muted-foreground hover:text-foreground">
+                    <ng-icon name="lucideReply" class="h-4 w-4"></ng-icon>
+                </button>
+                <button hlmBtn variant="ghost" size="icon" class="h-8 w-8 text-muted-foreground hover:text-foreground">
+                    <ng-icon name="lucideMoreVertical" class="h-4 w-4"></ng-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex-1 p-8 overflow-y-auto">
+            <div class="flex items-start justify-between mb-8">
+                <div class="flex gap-4">
+                    <div class="h-12 w-12 rounded-full flex items-center justify-center text-lg font-bold shadow-sm"
+                        [ngClass]="selectedMail.avatarColor">
+                        {{ selectedMail.initials }}
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold tracking-tight mb-1">{{ selectedMail.subject }}</h2>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="font-medium">{{ selectedMail.sender }}</span>
+                            <span class="text-muted-foreground">&lt;{{ selectedMail.email }}&gt;</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-xs text-muted-foreground font-medium">{{ selectedMail.date }}, 10:30 AM</span>
+            </div>
+
+            <div class="prose prose-sm max-w-none text-foreground leading-relaxed" [innerHTML]="selectedMail.content">
+            </div>
+        </div>
+
+        <div class="p-4 border-t border-border bg-background">
+            <textarea hlmInput class="min-h-[80px] w-full resize-none mb-2"
+                placeholder="Reply to {{ selectedMail.sender }}..."></textarea>
+            <div class="flex justify-between items-center">
+                <button hlmBtn variant="ghost" size="sm" class="text-muted-foreground">
+                    <ng-icon name="lucidePaperclip" class="h-4 w-4 mr-2"></ng-icon>
+                    Attach
+                </button>
+                <button hlmBtn variant="default" size="sm">Send Reply</button>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #noSelection>
+        <div class="flex-1 flex flex-col items-center justify-center text-muted-foreground">
+            <ng-icon name="lucideInbox" class="h-16 w-16 mb-4 opacity-20"></ng-icon>
+            <p>Select an email to read</p>
+        </div>
+    </ng-template>
+</div>
